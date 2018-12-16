@@ -1,7 +1,8 @@
 #include "particle-system/core/oneoffemitter.hpp"
 
 
-OneOffEmitter::OneOffEmitter(std::size_t emissionSize):
+OneOffEmitter::OneOffEmitter(float x, float y, float emissionSize):
+	Emitter(x, y),
 	emitted(false), emissionSize(emissionSize)
 {
 
@@ -14,6 +15,7 @@ OneOffEmitter::~OneOffEmitter()
 
 vector<Particle> OneOffEmitter::emit(float currentTime)
 {
+
 	if(emitted){
 		vector<Particle> p(0);
 		return p;

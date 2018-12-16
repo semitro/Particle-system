@@ -15,14 +15,16 @@ HEADERS += \
     include/particle-system/core/particlelaw.hpp \
     include/particle-system/core/emitter.hpp \
     include/particle-system/core/oneoffemitter.hpp \
-    include/particle-system/core/newtonlaw.hpp
+    include/particle-system/core/newtonlaw.hpp \
+    include/particle-system/core/circleemitter.hpp
 
 SOURCES += \
     src/main.cpp \
     src/particle-system/core/particlelaw.cpp \
     src/particle-system/graphics/particlesystem.cpp \
     src/particle-system/core/oneoffemitter.cpp \
-    include/particle-system/core/newtonlaw.cpp
+    include/particle-system/core/newtonlaw.cpp \
+    src/particle-system/core/circleemitter.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
