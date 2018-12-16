@@ -10,11 +10,14 @@ CONFIG(release, debug|release): LIBS +=  -lsfml-audio -lsfml-graphics -lsfml-net
 CONFIG(debug, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-window -lsfml-system
 
 HEADERS += \
-    include/particle-system/core/particle.hpp
+    include/particle-system/core/particle.hpp \
+    include/particle-system/graphics/particlesystem.hpp \
+    include/particle-system/core/particlelaw.hpp
 
 SOURCES += \
-    src/particle-system/core/particle.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/particle-system/core/particlelaw.cpp \
+    src/particle-system/graphics/particlesystem.cpp \
 
 SUBDIRS += \
     SarticlePystem.pro

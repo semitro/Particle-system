@@ -2,10 +2,11 @@
 #define PARTICLE_H
 
 
-class Particle
+struct Particle
 {
-public:
-	Particle();
+	Particle(float x, float y) :x(x), y(y){
+	}
+	float x,y, vx, vy;
 };
 
 #endif // PARTICLE_H

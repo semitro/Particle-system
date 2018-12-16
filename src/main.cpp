@@ -1,15 +1,20 @@
+#include <Graphics/VertexArray.hpp>
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
+#include "particle-system/graphics/particlesystem.hpp"
+
+using namespace sf;
+
 int main()
 {
 	// Create the main window
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-	// Load a sprite to display
-	// Create a graphical text to display
-	sf::Text text;
-	// Load a music to play
-	// Play the music
-	// Start the game loop
+	VertexArray a;
+	a.setPrimitiveType(PrimitiveType::Points);
+	a.append(*new Vertex(*new Vector2f(10, 10)));
+	ParticleSystem pSys;
+
 	while (window.isOpen())
 	{
 		// Process events
@@ -24,7 +29,7 @@ int main()
 		window.clear();
 		// Draw the sprite
 		// Draw the string
-		window.draw(text);
+		window.draw(*pSys.getVertexes());
 		// Update the window
 		window.display();
 	}
