@@ -1,13 +1,11 @@
 #include "particle-system/graphics/particlesystem.hpp"
-#include <iostream>
 
-using std::cerr;
-ParticleSystem::ParticleSystem()
+ParticleSystem::ParticleSystem(Emitter *emitter):emitter(emitter)
 {
 	this->particles = new vector<Particle>();
-	this->vertexes = new VertexArray(PrimitiveType::Points, 150);
-	for(int i =0; i < 150; i++)
-		this->particles->push_back(Particle(i*7, i*7));
+	this->vertexes  = new VertexArray(PrimitiveType::Points);
+
+	doEmission(0);
 	this->particleToVertexes();
 }
 
@@ -22,7 +20,15 @@ void ParticleSystem::particleToVertexes()
 		(*vertexes)[i].position.x = (*particles)[i].x;
 		(*vertexes)[i].position.y = (*particles)[i].y;
 	}
-	cerr << "hello";
+}
+
+void ParticleSystem::doEmission(float time)
+{
+	vector<Particle> newOnes = this->emitter->emit(time);
+	for(auto p : newOnes){
+		this->particles->push_back(p);
+		this->vertexes->append(Vertex());
+	}
 }
 
 

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include "particle-system/graphics/particlesystem.hpp"
+#include "particle-system/core/oneoffemitter.hpp"
 
 using namespace sf;
 
@@ -13,7 +14,7 @@ int main()
 	VertexArray a;
 	a.setPrimitiveType(PrimitiveType::Points);
 	a.append(*new Vertex(*new Vector2f(10, 10)));
-	ParticleSystem pSys;
+	ParticleSystem pSys(new OneOffEmitter(100));
 
 	while (window.isOpen())
 	{

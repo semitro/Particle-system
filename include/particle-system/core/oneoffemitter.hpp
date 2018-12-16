@@ -1,0 +1,4 @@
+#ifndef ONEOFFEMITTER_H
+#define ONEOFFEMITTER_H
+
+#endif // ONEOFFEMITTER_H
