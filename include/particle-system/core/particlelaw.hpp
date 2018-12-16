@@ -5,6 +5,8 @@
 #include "particle-system/core/particle.hpp"
 #include <vector>
 
+#define MIN_DISTANCE 0.0005f
+
 using namespace sf;
 using std::vector;
 

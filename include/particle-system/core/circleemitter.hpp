@@ -1,5 +1,5 @@
-#ifndef ONEOFFEMITTER_H
-#define ONEOFFEMITTER_H
+#ifndef CIRCLE_EMMITER_H
+#define CIRCLE_EMITTER_H
 
 #include "particle-system/core/particle.hpp"
 #include "particle-system/core/emitter.hpp"
@@ -12,13 +12,13 @@ using std::size_t;
 class CircleEmitter : public Emitter
 {
 public:
-	CircleEmitter(float posX, float posY, size_t emissionsPerSecond);
+	CircleEmitter(float posX, float posY, float emissionsPerSecond);
 	virtual ~CircleEmitter();
 	virtual vector<Particle> emit(float deltaTime);
 
 private:
-	size_t emissionSize;
+	float emissionSize;
 };
 
 
-#endif // ONEOFFEMITTER_H
+#endif // CIRCLE_EMITTER

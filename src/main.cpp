@@ -7,7 +7,11 @@
 #include "particle-system/graphics/particlesystem.hpp"
 #include "particle-system/core/circleemitter.hpp"
 #include "particle-system/core/newtonlaw.hpp"
+#include "particle-system/core/attractor.hpp"
+#include "particle-system/core/basicattractor.hpp"
+#include <vector>
 
+using std::vector;
 using namespace sf;
 
 int main()
@@ -17,7 +21,12 @@ int main()
 	VertexArray a;
 	a.setPrimitiveType(PrimitiveType::Points);
 	a.append(*new Vertex(*new Vector2f(10, 10)));
-	ParticleSystem pSys(new CircleEmitter(200, 200, 1), new ParticleLaw(&newtonLaw));
+
+	vector<Attractor*> *attractors = new vector<Attractor*>();
+	attractors->push_back(new BasicAttractor(300, 200, 0.005f));
+
+	ParticleSystem pSys(new CircleEmitter(50, 200, 0.01f), new ParticleLaw(&newtonLaw),
+						attractors);
 	Texture texture;
 	texture.loadFromFile("textures/gradient.png");
 	RenderStates renderStates;

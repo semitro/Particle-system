@@ -16,7 +16,10 @@ HEADERS += \
     include/particle-system/core/emitter.hpp \
     include/particle-system/core/oneoffemitter.hpp \
     include/particle-system/core/newtonlaw.hpp \
-    include/particle-system/core/circleemitter.hpp
+    include/particle-system/core/circleemitter.hpp \
+    include/particle-system/core/attractor.hpp \
+    include/particle-system/core/basicattractor.hpp \
+    include/particle-system/core/emptyattractor.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -24,7 +27,8 @@ SOURCES += \
     src/particle-system/graphics/particlesystem.cpp \
     src/particle-system/core/oneoffemitter.cpp \
     include/particle-system/core/newtonlaw.cpp \
-    src/particle-system/core/circleemitter.cpp
+    src/particle-system/core/circleemitter.cpp \
+    src/particle-system/core/basicattractor.cpp
 
 SUBDIRS += \
     SarticlePystem.pro

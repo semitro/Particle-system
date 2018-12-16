@@ -1,14 +1,22 @@
 #include "particle-system/graphics/particlesystem.hpp"
 
-ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law):emitter(emitter), law(law)
+ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law)
+	:ParticleSystem(emitter, law, new vector<Attractor*>())
+{
+
+}
+
+ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law,
+							   vector<Attractor*> *attractors)
+	:emitter(emitter), attractors(attractors), law(law)
 {
 	this->particles = new vector<Particle>();
 	this->vertexes  = new VertexArray(PrimitiveType::Points);
 
 	doEmission(0);
 	this->particleToVertexes();
-}
 
+}
 const VertexArray* ParticleSystem::getVertexes()
 {
 	return this->vertexes;
@@ -34,6 +42,9 @@ void ParticleSystem::doEmission(float time)
 void ParticleSystem::update(float delta_time){
 	this->doEmission(delta_time);
 	this->law->process(*this->particles);
+	for(size_t i = 0; i < this->attractors->size(); i++)
+		this->attractors->at(i)->attract(*this->particles, delta_time);
+
 	this->particleToVertexes();
 }
 

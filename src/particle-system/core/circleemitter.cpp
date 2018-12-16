@@ -1,7 +1,7 @@
 #include "particle-system/core/circleemitter.hpp"
 
 
-CircleEmitter::CircleEmitter(float posX, float posY, std::size_t emissionSize):
+CircleEmitter::CircleEmitter(float posX, float posY, float emissionSize):
 	Emitter(posX, posY),
 	emissionSize(emissionSize)
 {
@@ -36,4 +36,3 @@ vector<Particle> CircleEmitter::emit(float deltaTime)
   }
   return p;
 }
-

@@ -6,6 +6,7 @@
 #include "math.h"
 
 #define G 0.05f
+
 using std::vector;
 using std::size_t;
 
