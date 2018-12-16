@@ -5,7 +5,7 @@
 #include "particle-system/core/particle.hpp"
 #include "math.h"
 
-#define G 0.025f
+#define G 0.055f
 using std::vector;
 using std::size_t;
 

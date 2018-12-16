@@ -15,7 +15,12 @@ int main()
 	VertexArray a;
 	a.setPrimitiveType(PrimitiveType::Points);
 	a.append(*new Vertex(*new Vector2f(10, 10)));
-	ParticleSystem pSys(new OneOffEmitter(500), new ParticleLaw(&newtonLaw));
+	ParticleSystem pSys(new OneOffEmitter(3200), new ParticleLaw(&newtonLaw));
+	Texture texture;
+	texture.loadFromFile("textures/gradient.png");
+	RenderStates renderStates;
+	renderStates.texture = &texture;
+
 
 	while (window.isOpen())
 	{
@@ -30,7 +35,7 @@ int main()
 		// Clear screen
 		window.clear();
 		pSys.update(15.f);
-		window.draw(*pSys.getVertexes());
+		window.draw(*pSys.getVertexes(), renderStates);
 		// Update the window
 		window.display();
 	}

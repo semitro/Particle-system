@@ -5,6 +5,7 @@
 #include "particle-system/core/emitter.hpp"
 
 #include <vector>
+#include <cstdlib>
 
 using std::vector;
 using std::size_t;

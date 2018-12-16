@@ -21,8 +21,8 @@ vector<Particle> OneOffEmitter::emit(float currentTime)
 	emitted = true;
 	vector<Particle> p(emissionSize);
 	for(size_t i = 0; i < emissionSize; i++){
-	  p[i].x = i*2;
-	  p[i].y = i*2.5f;
+	  p[i].x = i*0.5f;
+	  p[i].y = i*0.25f + rand()/(float)RAND_MAX;
   }
   return p;
 }
