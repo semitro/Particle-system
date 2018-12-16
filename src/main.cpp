@@ -1,7 +1,9 @@
 #include <Graphics/VertexArray.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
+#include <SFML/Graphics/Shader.hpp>
 #include "particle-system/graphics/particlesystem.hpp"
 #include "particle-system/core/oneoffemitter.hpp"
 #include "particle-system/core/newtonlaw.hpp"
@@ -15,12 +17,15 @@ int main()
 	VertexArray a;
 	a.setPrimitiveType(PrimitiveType::Points);
 	a.append(*new Vertex(*new Vector2f(10, 10)));
-	ParticleSystem pSys(new OneOffEmitter(3200), new ParticleLaw(&newtonLaw));
+	ParticleSystem pSys(new OneOffEmitter(200), new ParticleLaw(&newtonLaw));
 	Texture texture;
 	texture.loadFromFile("textures/gradient.png");
 	RenderStates renderStates;
+	sf::Shader shader;
+	shader.loadFromFile("shaders/shader.frag", Shader::Fragment);
+	shader.setUniform("texture", Shader::CurrentTexture);
 	renderStates.texture = &texture;
-
+	renderStates.shader = &shader;
 
 	while (window.isOpen())
 	{
@@ -35,6 +40,7 @@ int main()
 		// Clear screen
 		window.clear();
 		pSys.update(15.f);
+//		window.draw(Sprite(texture), renderStates );
 		window.draw(*pSys.getVertexes(), renderStates);
 		// Update the window
 		window.display();

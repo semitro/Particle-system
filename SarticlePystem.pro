@@ -27,3 +27,6 @@ SOURCES += \
 SUBDIRS += \
     SarticlePystem.pro
 
+DISTFILES+=
+        shaders/shader.frag
+

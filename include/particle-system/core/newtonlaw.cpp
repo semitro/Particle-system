@@ -7,7 +7,7 @@ void newtonLaw(vector<Particle> &particles)
 			float dx = particles[j].x - particles[i].x;
 			float dy = particles[j].y - particles[i].y;
 			float distance = sqrtf(dx*dx + dy*dy);
-			if(distance < 2)
+			if(distance < 0.00000000001f)
 				continue;
 			float force = G/(distance*distance);
 			particles[i].vx += force*dx;
