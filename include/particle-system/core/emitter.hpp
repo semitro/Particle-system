@@ -1,11 +1,17 @@
 #ifndef EMITTER_HPP
 #define EMITTER_HPP
 
+#include "particle-system/core/particle.hpp"
+#include <vector>
 
-class emitter
+using std::vector;
+
+class Emitter
 {
 public:
-	emitter();
+	Emitter(){}
+	virtual ~Emitter(){}
+	virtual vector<Particle> emit(float currentTime)=0;
 };
 
 #endif // EMITTER_HPP

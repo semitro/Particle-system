@@ -5,6 +5,8 @@
 #include <vector>
 
 #include "particle-system/core/particle.hpp"
+#include "particle-system/core/emitter.hpp"
+#include "particle-system/core/particlelaw.hpp"
 
 using namespace sf;
 using std::vector;
@@ -12,13 +14,16 @@ using std::vector;
 class ParticleSystem
 {
 public:
-	ParticleSystem();
+	ParticleSystem(Emitter *emitter, ParticleLaw *law);
 	const VertexArray* getVertexes();
+	void update(float delta_time);
 private:
 	VertexArray *vertexes;
 	vector<Particle> *particles;
-	void (law)(VertexArray &v, vector<Particle> &p);
+	Emitter *emitter;
+	ParticleLaw *law;
 	void particleToVertexes();
+	void doEmission(float time);
 };
 
 #endif // PARTICLESYSTEM_HPP

@@ -4,6 +4,7 @@
 #include <SFML/Graphics/VertexArray.hpp>
 #include "particle-system/graphics/particlesystem.hpp"
 #include "particle-system/core/oneoffemitter.hpp"
+#include "particle-system/core/newtonlaw.hpp"
 
 using namespace sf;
 
@@ -14,7 +15,7 @@ int main()
 	VertexArray a;
 	a.setPrimitiveType(PrimitiveType::Points);
 	a.append(*new Vertex(*new Vector2f(10, 10)));
-	ParticleSystem pSys(new OneOffEmitter(100));
+	ParticleSystem pSys(new OneOffEmitter(500), new ParticleLaw(&newtonLaw));
 
 	while (window.isOpen())
 	{
@@ -28,8 +29,7 @@ int main()
 		}
 		// Clear screen
 		window.clear();
-		// Draw the sprite
-		// Draw the string
+		pSys.update(15.f);
 		window.draw(*pSys.getVertexes());
 		// Update the window
 		window.display();

@@ -1,6 +1,6 @@
 #include "particle-system/graphics/particlesystem.hpp"
 
-ParticleSystem::ParticleSystem(Emitter *emitter):emitter(emitter)
+ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law):emitter(emitter), law(law)
 {
 	this->particles = new vector<Particle>();
 	this->vertexes  = new VertexArray(PrimitiveType::Points);
@@ -31,4 +31,9 @@ void ParticleSystem::doEmission(float time)
 	}
 }
 
+void ParticleSystem::update(float delta_time){
+	this->doEmission(delta_time);
+	this->law->process(*this->particles);
+	this->particleToVertexes();
+}
 
