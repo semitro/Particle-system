@@ -1,8 +1,11 @@
 #version 130
 uniform sampler2D texture;
+uniform vec2 iResolution;
+
 in vec2 tex_coord;
 
 void main()
 {
-    gl_FragColor = vec4(0.95, 0.8, 0.9, 1.);//texture2D(texture, gl_FragCoord.yx/2400);
+    vec2 norm = vec2(gl_FragCoord.x/iResolution.x, gl_FragCoord.y/iResolution.y); 
+    gl_FragColor = texture2D(texture, norm);
 }

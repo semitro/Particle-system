@@ -10,9 +10,11 @@
 #include "particle-system/core/attractor.hpp"
 #include "particle-system/core/basicattractor.hpp"
 #include <vector>
+#include <iostream>
 
 using std::vector;
 using namespace sf;
+using std::cout;
 
 int main()
 {
@@ -27,14 +29,19 @@ int main()
 
 	ParticleSystem pSys(new CircleEmitter(50, 200, 0.01f), new ParticleLaw(&newtonLaw),
 						attractors);
+
+    Vector2f iResolution(VideoMode::getDesktopMode().width,VideoMode::getDesktopMode().height);
 	Texture texture;
 	texture.loadFromFile("textures/gradient.png");
 	RenderStates renderStates;
 	sf::Shader shader;
 	shader.loadFromFile("shaders/shader.frag", Shader::Fragment);
 	shader.setUniform("texture", Shader::CurrentTexture);
+    shader.setUniform("iResolution", iResolution);
+
 	renderStates.texture = &texture;
 	renderStates.shader = &shader;
+    cout << VideoMode::getDesktopMode().width << "\n";
 
 	while (window.isOpen())
 	{
@@ -48,7 +55,7 @@ int main()
 		}
 		// Clear screen
 		window.clear();
-		pSys.update(0.02f);
+        pSys.update(0.002f);
 //		window.draw(Sprite(texture), renderStates );
 		window.draw(*pSys.getVertexes(), renderStates);
 		// Update the window
