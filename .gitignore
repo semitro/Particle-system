@@ -2,6 +2,9 @@
 *.d
 *autosave
 *.swap
+*.swp
+*.pro.user*
+
 # Compiled Object files
 *.slo
 *.lo

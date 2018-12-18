@@ -28,7 +28,7 @@ int main()
 	a.append(*new Vertex(*new Vector2f(10, 10)));
 
 	vector<Attractor*> *attractors = new vector<Attractor*>();
-	attractors->push_back(new BasicAttractor(300, 200, 0.005f));
+    attractors->push_back(new BasicAttractor(700, 400, 0.005f));
 
     ParticleSystem pSys(new CircleEmitter(50, 200, 0.001f), new ParticleLaw(&newtonLaw),
 						attractors);
@@ -36,16 +36,18 @@ int main()
     Vector2f iResolution(VideoMode::getDesktopMode().width,VideoMode::getDesktopMode().height);
 	Texture texture;
 	texture.loadFromFile("textures/gradient.png");
-	RenderStates renderStates;
-	sf::Shader shader;
+    Shader shader;
+    shader.setUniform("texture", texture);
+
 	shader.loadFromFile("shaders/shader.frag", Shader::Fragment);
-	shader.setUniform("texture", Shader::CurrentTexture);
+    shader.setUniform("texture", texture);
     shader.setUniform("iResolution", iResolution);
     Clock clock;
     float time = 0.f;
-
-	renderStates.texture = &texture;
-	renderStates.shader = &shader;
+    RenderStates renderStates(&shader);
+    renderStates.texture = &texture;
+    RenderTexture renderedTexture;
+    renderedTexture.create(VideoMode::getDesktopMode().width, VideoMode::getDesktopMode().height);
 
 	while (window.isOpen())
 	{
@@ -60,14 +62,20 @@ int main()
 		// Clear screen
         Int64 dTime = clock.getElapsedTime().asMicroseconds();
         time += dTime;
-
         clock.restart();
         pSys.update(dTime/WORLD_TIME_SPEED);
-//		window.draw(Sprite(texture), renderStates );
-        window.clear();
-        shader.setUniform("uTime", time/SHADER_TIME_SPEED);
+        renderedTexture.clear();
+        renderedTexture.draw(*pSys.getVertexes());
+        renderedTexture.display();
 
-		window.draw(*pSys.getVertexes(), renderStates);
+        shader.setUniform("uTime", time/SHADER_TIME_SPEED);
+        shader.setUniform("baseTexture", renderedTexture.getTexture());
+
+        window.clear();
+        window.draw(*new Sprite(renderedTexture.getTexture()), renderStates);
+//        window.draw(*pSys.getVertexes(), renderStates);
+
+
 		// Update the window
 		window.display();
 	}
