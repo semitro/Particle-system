@@ -37,8 +37,6 @@ int main()
 	Texture texture;
 	texture.loadFromFile("textures/gradient.png");
     Texture particleTexture;
-    particleTexture.loadFromFile("textures/particle.png");
-    RenderStates particleRenderState(&particleTexture);
     Shader shader;
     shader.setUniform("texture", texture);
 
@@ -72,18 +70,12 @@ int main()
         sh.setRadius(1.5f);
         sh.setFillColor(Color(125, 155, 125, 128));
 
-        for(size_t i = 0; i < pSys.getVertexes()->getVertexCount(); i++){
-           Vertex dot = (*pSys.getVertexes())[i];
-           IntRect ir(0, 0, 5, 5);
-           Sprite point(particleTexture);
-           point.setPosition(dot.position);
-           point.scale(0.5f, 0.5f);
-//           renderedTexture.draw(point);
-           sh.setPosition(dot.position);
+        for(size_t i = 0; i < pSys.getParticles()->size(); i++){
+           Particle dot = (*pSys.getParticles())[i];
+           sh.setPosition(dot.x, dot.y);
            renderedTexture.draw(sh);
 
         }
-//        renderedTexture.draw(*pSys.getVertexes(), particleRenderState);
         renderedTexture.display();
 
         shader.setUniform("uTime", time/SHADER_TIME_SPEED);
@@ -91,7 +83,6 @@ int main()
 
         window.clear();
         window.draw(*new Sprite(renderedTexture.getTexture()), renderStates);
-//        window.draw(*pSys.getVertexes(), renderStates);
 
 
 		// Update the window

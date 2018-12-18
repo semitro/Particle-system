@@ -14,21 +14,14 @@ ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law,
 	this->vertexes  = new VertexArray(PrimitiveType::Points);
 
 	doEmission(0);
-	this->particleToVertexes();
 
 }
-const VertexArray* ParticleSystem::getVertexes()
+const vector<Particle>* ParticleSystem::getParticles()
 {
-    return this->vertexes;
+    return this->particles;
 }
 
-void ParticleSystem::particleToVertexes()
-{
-	for(size_t i = 0; i < this->particles->size(); i++){
-		(*vertexes)[i].position.x = (*particles)[i].x;
-		(*vertexes)[i].position.y = (*particles)[i].y;
-	}
-}
+
 
 void ParticleSystem::doEmission(float time)
 {
@@ -45,6 +38,5 @@ void ParticleSystem::update(float delta_time){
 	for(size_t i = 0; i < this->attractors->size(); i++)
 		this->attractors->at(i)->attract(*this->particles, delta_time);
 
-	this->particleToVertexes();
 }
 
