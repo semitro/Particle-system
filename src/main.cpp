@@ -12,6 +12,9 @@
 #include <vector>
 #include <iostream>
 
+#define WORLD_TIME_SPEED 950000.f
+#define SHADER_TIME_SPEED 550000.f
+
 using std::vector;
 using namespace sf;
 using std::cout;
@@ -27,7 +30,7 @@ int main()
 	vector<Attractor*> *attractors = new vector<Attractor*>();
 	attractors->push_back(new BasicAttractor(300, 200, 0.005f));
 
-	ParticleSystem pSys(new CircleEmitter(50, 200, 0.01f), new ParticleLaw(&newtonLaw),
+    ParticleSystem pSys(new CircleEmitter(50, 200, 0.001f), new ParticleLaw(&newtonLaw),
 						attractors);
 
     Vector2f iResolution(VideoMode::getDesktopMode().width,VideoMode::getDesktopMode().height);
@@ -38,10 +41,11 @@ int main()
 	shader.loadFromFile("shaders/shader.frag", Shader::Fragment);
 	shader.setUniform("texture", Shader::CurrentTexture);
     shader.setUniform("iResolution", iResolution);
+    Clock clock;
+    float time = 0.f;
 
 	renderStates.texture = &texture;
 	renderStates.shader = &shader;
-    cout << VideoMode::getDesktopMode().width << "\n";
 
 	while (window.isOpen())
 	{
@@ -54,9 +58,15 @@ int main()
 				window.close();
 		}
 		// Clear screen
-		window.clear();
-        pSys.update(0.002f);
+        Int64 dTime = clock.getElapsedTime().asMicroseconds();
+        time += dTime;
+
+        clock.restart();
+        pSys.update(dTime/WORLD_TIME_SPEED);
 //		window.draw(Sprite(texture), renderStates );
+        window.clear();
+        shader.setUniform("uTime", time/SHADER_TIME_SPEED);
+
 		window.draw(*pSys.getVertexes(), renderStates);
 		// Update the window
 		window.display();
