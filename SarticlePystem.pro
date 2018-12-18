@@ -19,7 +19,8 @@ HEADERS += \
     include/particle-system/core/attractor.hpp \
     include/particle-system/core/basicattractor.hpp \
     include/particle-system/core/emptyattractor.hpp \
-    include/particle-system/graphics/particlesystem.hpp
+    include/particle-system/graphics/particlesystem.hpp \
+    include/particle-system/graphics/particlesdrawer.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -28,7 +29,8 @@ SOURCES += \
     src/particle-system/core/newtonlaw.cpp \
     src/particle-system/core/circleemitter.cpp \
     src/particle-system/core/basicattractor.cpp \
-    src/particle-system/graphics/particlesystem.cpp
+    src/particle-system/graphics/particlesystem.cpp \
+    src/particle-system/graphics/particlesdrawer.cpp
 
 SUBDIRS += \
     SarticlePystem.pro

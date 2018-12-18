@@ -1,4 +1,4 @@
-#include "particlesdrawer.hpp"
+#include "particle-system/graphics/particlesdrawer.hpp"
 
 ParticlesDrawer::ParticlesDrawer(const vector<Particle> * const particles)
     :particles(particles), glowShader(), renderStates(&glowShader)
