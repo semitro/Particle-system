@@ -12,12 +12,13 @@
 using namespace sf;
 using std::vector;
 
+
 class ParticleSystem
 {
 public:
 	ParticleSystem(Emitter *emitter, ParticleLaw *law, vector<Attractor*> *attractors);
 	ParticleSystem(Emitter *emitter, ParticleLaw *law);
-    const VertexArray *getParticles();
+    const vector<Particle> *getParticles();
 	void update(float delta_time);
 private:
 	VertexArray *vertexes;

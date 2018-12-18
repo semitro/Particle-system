@@ -5,6 +5,8 @@
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/Shader.hpp>
 #include "particle-system/graphics/particlesystem.hpp"
+#include "particle-system/graphics/particlesdrawer.hpp"
+
 #include "particle-system/core/circleemitter.hpp"
 #include "particle-system/core/newtonlaw.hpp"
 #include "particle-system/core/attractor.hpp"
@@ -22,10 +24,7 @@ using std::cout;
 int main()
 {
 	// Create the main window
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-	VertexArray a;
-	a.setPrimitiveType(PrimitiveType::Points);
-	a.append(*new Vertex(*new Vector2f(10, 10)));
+    RenderWindow window(sf::VideoMode(800, 600), "SFML window");
 
 	vector<Attractor*> *attractors = new vector<Attractor*>();
     attractors->push_back(new BasicAttractor(700, 400, 0.005f));
@@ -33,22 +32,9 @@ int main()
     ParticleSystem pSys(new CircleEmitter(50, 200, 0.001f), new ParticleLaw(&newtonLaw),
 						attractors);
 
-    Vector2f iResolution(VideoMode::getDesktopMode().width,VideoMode::getDesktopMode().height);
-	Texture texture;
-	texture.loadFromFile("textures/gradient.png");
-    Texture particleTexture;
-    Shader shader;
-    shader.setUniform("texture", texture);
-
-	shader.loadFromFile("shaders/shader.frag", Shader::Fragment);
-    shader.setUniform("texture", texture);
-    shader.setUniform("iResolution", iResolution);
+    ParticlesDrawer particlesDrawer(pSys.getParticles());
     Clock clock;
     float time = 0.f;
-    RenderStates renderStates(&shader);
-    renderStates.texture = &texture;
-    RenderTexture renderedTexture;
-    renderedTexture.create(VideoMode::getDesktopMode().width, VideoMode::getDesktopMode().height);
 
 	while (window.isOpen())
 	{
@@ -65,22 +51,17 @@ int main()
         time += dTime;
         clock.restart();
         pSys.update(dTime/WORLD_TIME_SPEED);
-        renderedTexture.clear();
-
-        renderedTexture.draw(*pSys.getParticles());
-        renderedTexture.display();
-
-        shader.setUniform("uTime", time/SHADER_TIME_SPEED);
-        shader.setUniform("baseTexture", renderedTexture.getTexture());
-
         window.clear();
-        window.draw(*new Sprite(renderedTexture.getTexture()), renderStates);
+        particlesDrawer.drawPaticles(window, time);
+        window.display();
 
 
-		// Update the window
-		window.display();
 	}
 	return EXIT_SUCCESS;
 }
 
 
+void render(RenderWindow &window){
+
+    // Update the window
+}

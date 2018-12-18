@@ -16,9 +16,9 @@ ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law,
 	doEmission(0);
 
 }
-const VertexArray *ParticleSystem::getParticles()
+const vector<Particle> *ParticleSystem::getParticles()
 {
-    return this->vertexes;
+    return this->particles;
 }
 
 
