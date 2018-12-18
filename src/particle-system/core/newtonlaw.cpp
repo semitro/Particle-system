@@ -1,4 +1,4 @@
-#include "newtonlaw.hpp"
+#include "particle-system/core/newtonlaw.hpp"
 
 void newtonLaw(vector<Particle> &particles)
 {

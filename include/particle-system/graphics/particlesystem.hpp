@@ -17,7 +17,7 @@ class ParticleSystem
 public:
 	ParticleSystem(Emitter *emitter, ParticleLaw *law, vector<Attractor*> *attractors);
 	ParticleSystem(Emitter *emitter, ParticleLaw *law);
-    const vector<Particle> *getParticles();
+    const VertexArray *getParticles();
 	void update(float delta_time);
 private:
 	VertexArray *vertexes;
@@ -26,6 +26,7 @@ private:
 	vector<Attractor*> *attractors;
 	ParticleLaw *law;
 	void doEmission(float time);
+    void particlesToVertexes();
 };
 
 #endif // PARTICLESYSTEM_HPP

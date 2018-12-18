@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/Shader.hpp>
-#include "particle-system/core/particlesystem.hpp"
+#include "particle-system/graphics/particlesystem.hpp"
 #include "particle-system/core/circleemitter.hpp"
 #include "particle-system/core/newtonlaw.hpp"
 #include "particle-system/core/attractor.hpp"
@@ -66,16 +66,8 @@ int main()
         clock.restart();
         pSys.update(dTime/WORLD_TIME_SPEED);
         renderedTexture.clear();
-        CircleShape sh;
-        sh.setRadius(1.f);
-        sh.setFillColor(Color(125, 155, 125, 128));
 
-        for(size_t i = 0; i < pSys.getParticles()->size(); i++){
-           Particle dot = (*pSys.getParticles())[i];
-           sh.setPosition(dot.x, dot.y);
-           renderedTexture.draw(sh);
-
-        }
+        renderedTexture.draw(*pSys.getParticles());
         renderedTexture.display();
 
         shader.setUniform("uTime", time/SHADER_TIME_SPEED);
