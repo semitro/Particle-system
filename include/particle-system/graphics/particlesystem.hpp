@@ -21,13 +21,11 @@ public:
     const vector<Particle> *getParticles();
 	void update(float delta_time);
 private:
-	VertexArray *vertexes;
 	vector<Particle> *particles;
 	Emitter *emitter;
 	vector<Attractor*> *attractors;
 	ParticleLaw *law;
 	void doEmission(float time);
-    void particlesToVertexes();
 };
 
 #endif // PARTICLESYSTEM_HPP
