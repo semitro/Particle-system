@@ -16,7 +16,7 @@ vec4 blend(vec4 bottom, vec4 top)
 //        return  vec4(r,g,b,bottom.a);
 
         //Classic color burn
-        //return vector(bottom.rgb + top.rgb - 1, bottom.a);
+//        return vec4(bottom.rgb + top.rgb - 1, bottom.a);
 
         //Color burn
 //        return vec4( 1.f - (1.f-bottom.rgb)/top.rgb, bottom.a);
@@ -34,5 +34,5 @@ void main()
     vec2 norm = vec2(gl_FragCoord.x/iResolution.x, gl_FragCoord.y/iResolution.y);
     // vec4(sin(uTime), sin(uTime), 1., 1.)
 
-     gl_FragColor = blend(texture2D(baseTexture, norm), texture2D(texture, norm));
+     gl_FragColor = blend(texture2D(texture, norm), texture2D(baseTexture, norm));
 }

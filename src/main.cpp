@@ -36,6 +36,9 @@ int main()
     Vector2f iResolution(VideoMode::getDesktopMode().width,VideoMode::getDesktopMode().height);
 	Texture texture;
 	texture.loadFromFile("textures/gradient.png");
+    Texture particleTexture;
+    particleTexture.loadFromFile("textures/particle.png");
+    RenderStates particleRenderState(&particleTexture);
     Shader shader;
     shader.setUniform("texture", texture);
 
@@ -65,7 +68,22 @@ int main()
         clock.restart();
         pSys.update(dTime/WORLD_TIME_SPEED);
         renderedTexture.clear();
-        renderedTexture.draw(*pSys.getVertexes());
+        CircleShape sh;
+        sh.setRadius(1.5f);
+        sh.setFillColor(Color(125, 155, 125, 128));
+
+        for(size_t i = 0; i < pSys.getVertexes()->getVertexCount(); i++){
+           Vertex dot = (*pSys.getVertexes())[i];
+           IntRect ir(0, 0, 5, 5);
+           Sprite point(particleTexture);
+           point.setPosition(dot.position);
+           point.scale(0.5f, 0.5f);
+//           renderedTexture.draw(point);
+           sh.setPosition(dot.position);
+           renderedTexture.draw(sh);
+
+        }
+//        renderedTexture.draw(*pSys.getVertexes(), particleRenderState);
         renderedTexture.display();
 
         shader.setUniform("uTime", time/SHADER_TIME_SPEED);
@@ -81,3 +99,5 @@ int main()
 	}
 	return EXIT_SUCCESS;
 }
+
+
