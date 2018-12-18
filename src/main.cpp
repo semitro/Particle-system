@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/Shader.hpp>
-#include "particle-system/graphics/particlesystem.hpp"
+#include "particle-system/core/particlesystem.hpp"
 #include "particle-system/graphics/particlesdrawer.hpp"
 
 #include "particle-system/core/circleemitter.hpp"
