@@ -1,4 +1,4 @@
-#include "particle-system/graphics/particlesystem.hpp"
+#include "particle-system/core/particlesystem.hpp"
 
 ParticleSystem::ParticleSystem(Emitter *emitter, ParticleLaw *law)
 	:ParticleSystem(emitter, law, new vector<Attractor*>())
