@@ -13,6 +13,10 @@
 #include "particle-system/core/basicattractor.hpp"
 #include <vector>
 #include <iostream>
+#include <QApplication>
+#include <QThread>
+#include "gui/particlesystemwindow.hpp"
+
 
 #define WORLD_TIME_SPEED 950000.f
 #define SHADER_TIME_SPEED 550000.f
@@ -21,8 +25,16 @@ using std::vector;
 using namespace sf;
 using std::cout;
 
-int main()
+int main(int argc, char **argv)
 {
+	QApplication a(argc, argv);
+	QFrame* MainFrame = new QFrame;
+	   MainFrame->setWindowTitle("Qt SFML");
+	   MainFrame->resize(400, 400);
+	   MainFrame->show();
+	ParticleSystemWindow window1(MainFrame,  QPoint(0, 0), QSize(600, 400));
+	window1.show();
+	a.exec();
 	// Create the main window
     RenderWindow window(sf::VideoMode(800, 600), "SFML window");
 
@@ -54,14 +66,5 @@ int main()
         window.clear();
         particlesDrawer.drawPaticles(window, time);
         window.display();
-
-
 	}
-	return EXIT_SUCCESS;
-}
-
-
-void render(RenderWindow &window){
-
-    // Update the window
 }

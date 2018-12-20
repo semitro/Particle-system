@@ -1,7 +1,8 @@
 TEMPLATE = app
 CONFIG += console c++11
 CONFIG -= app_bundle
-CONFIG -= qt
+#CONFIG -= qt
+QT += core gui charts
 
 INCLUDEPATH += "/usr/include/SFML/"
 INCLUDEPATH += "include/"
@@ -20,7 +21,10 @@ HEADERS += \
     include/particle-system/core/basicattractor.hpp \
     include/particle-system/core/emptyattractor.hpp \
     include/particle-system/core/particlesystem.hpp \
-    include/particle-system/graphics/particlesdrawer.hpp
+    include/particle-system/graphics/particlesdrawer.hpp \
+    gui/facilitymenu.hpp \
+    gui/qsfmlintegration.hpp \
+    gui/particlesystemwindow.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -30,11 +34,17 @@ SOURCES += \
     src/particle-system/core/circleemitter.cpp \
     src/particle-system/core/basicattractor.cpp \
     src/particle-system/core/particlesystem.cpp \
-    src/particle-system/graphics/particlesdrawer.cpp
+    src/particle-system/graphics/particlesdrawer.cpp \
+    gui/facilitymenu.cpp \
+    gui/qsfmlintegration.cpp \
+    gui/particlesystemwindow.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
 
-DISTFILES+=
+DISTFILES+= \
         shaders/shader.frag
+
+FORMS += \
+    gui/facilitymenu.ui
 
