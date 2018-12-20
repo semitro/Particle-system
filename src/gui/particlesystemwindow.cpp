@@ -14,23 +14,16 @@ void ParticleSystemWindow::OnInit(){
 						attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
 	this->time = 0.f;
+
+
 }
 
 void ParticleSystemWindow::OnUpdate(){
 		// Process events
-	sf::Event event;
-	while (this->pollEvent(event))
-	{
-			// Close window: exit
-		if (event.type == sf::Event::Closed)
-			this->RenderWindow::close();
-		}
-
 	Int64 dTime = clock.getElapsedTime().asMicroseconds();
 	time += dTime;
 	clock.restart();
+	RenderWindow::clear(Color(250, 25, 25));
 	particleSystem->update(dTime/WORLD_TIME_SPEED);
-	this->clear();
 	particleDrawer->drawPaticles(*this, time);
-	this->display();
 }

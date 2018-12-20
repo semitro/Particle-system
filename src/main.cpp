@@ -25,10 +25,11 @@ int main(int argc, char **argv)
 	QApplication a(argc, argv);
 	QFrame* MainFrame = new QFrame;
 	MainFrame->setWindowTitle("Qt SFML");
-	MainFrame->resize(800, 800);
+	MainFrame->resize(1300, 800);
 	MainFrame->show();
-	ParticleSystemWindow *window = new ParticleSystemWindow(MainFrame,  QPoint(10, 10), QSize(800, 800));
-	WindowUpdater updater(10, MainFrame, window);
+	ParticleSystemWindow *window = new ParticleSystemWindow(MainFrame,  QPoint(10, 10), QSize(1300, 800));
+
+//	WindowUpdater updater(0, MainFrame, window);
 
 	window->update();
 	window->show();

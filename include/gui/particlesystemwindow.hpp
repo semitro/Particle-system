@@ -27,10 +27,13 @@ private:
 	ParticleSystem *particleSystem;
 	ParticlesDrawer *particleDrawer;
 	Clock clock;
+	QTimer timer;
 	float time;
 
 	virtual void OnInit();
 	virtual void OnUpdate();
+private slots:
+	void onTimeOut();
 };
 
 #endif // PARTICLESYSTEMWINDOW_HPP

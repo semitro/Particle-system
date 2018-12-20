@@ -1,13 +1,18 @@
 #include "gui/windowupdater.hpp"
 #include <iostream>
+#include <QtDebug>
 using std::cerr;
 
 void WindowUpdater::doUpdate(){
-	cerr << "hello";
+	window->parentWidget()->update();
+	window->update();
+	window->repaint();
 }
 
-WindowUpdater::WindowUpdater(int time, QObject *parent, QWidget *window) : window(window){
+WindowUpdater::WindowUpdater(int time, QObject *parent, QWidget *window) : QObject(parent), window(window){
 		QTimer *timer = new QTimer(parent);
 		timer->setInterval(time);
-		QObject::connect(timer, SIGNAL(timer->timeout()), this, SLOT(this->update()));
+		timer->setTimerType(Qt::TimerType::CoarseTimer);
+		this->connect(timer, &QTimer::timeout, this, &WindowUpdater::doUpdate);
+		timer->start();
 }

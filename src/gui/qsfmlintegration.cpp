@@ -7,7 +7,7 @@
 
 QSFMLCanvas::~QSFMLCanvas(){}
 
-QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& Size, unsigned int FrameTime) :
+QSFMLCanvas::QSFMLCanvas(QWidget* Parent, const QPoint& Position, const QSize& Size, unsigned int FrameTime):
 QWidget       (Parent),
 myInitialized (false)
 {

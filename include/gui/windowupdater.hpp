@@ -6,14 +6,14 @@
 #include <QObject>
 #include <QTimer>
 
-class WindowUpdater : public QFrame{
+class WindowUpdater : public QObject{
 	Q_OBJECT
 public:
 	WindowUpdater(int time, QObject *parent, QWidget *window);
 private:
 	QWidget *window;
 
-public slots:
+private slots:
 	void doUpdate();
 };
 
