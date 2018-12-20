@@ -11,7 +11,6 @@
 #include <QObject>
 #include <QFrame>
 
-#include "gui/windowupdater.hpp"
 #include "gui/particlesystemwindow.hpp"
 
 #define SHADER_TIME_SPEED 550000.f
@@ -28,8 +27,6 @@ int main(int argc, char **argv)
 	MainFrame->resize(1300, 800);
 	MainFrame->show();
 	ParticleSystemWindow *window = new ParticleSystemWindow(MainFrame,  QPoint(10, 10), QSize(1300, 800));
-
-//	WindowUpdater updater(0, MainFrame, window);
 
 	window->update();
 	window->show();

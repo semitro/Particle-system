@@ -25,8 +25,7 @@ HEADERS += \
     include/gui/qsfmlintegration.hpp \
     include/gui/particlesystemwindow.hpp \
     gui/facilitymenu.h \
-    gui/queuemenu.h \
-    include/gui/windowupdater.hpp
+    gui/queuemenu.h
 
 SOURCES += \
     src/main.cpp \
@@ -41,8 +40,7 @@ SOURCES += \
     src/gui/particlesystemwindow.cpp \
     src/particle-system/core/emitter.cpp \
     gui/facilitymenu.cpp \
-    gui/queuemenu.cpp \
-    src/gui/windowupdater.cpp
+    gui/queuemenu.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
