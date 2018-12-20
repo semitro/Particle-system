@@ -23,7 +23,10 @@ HEADERS += \
     include/particle-system/core/particlesystem.hpp \
     include/particle-system/graphics/particlesdrawer.hpp \
     include/gui/qsfmlintegration.hpp \
-    include/gui/particlesystemwindow.hpp
+    include/gui/particlesystemwindow.hpp \
+    gui/facilitymenu.h \
+    gui/queuemenu.h \
+    include/gui/windowupdater.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -36,7 +39,10 @@ SOURCES += \
     src/particle-system/graphics/particlesdrawer.cpp \
     src/gui/qsfmlintegration.cpp \
     src/gui/particlesystemwindow.cpp \
-    src/particle-system/core/emitter.cpp
+    src/particle-system/core/emitter.cpp \
+    gui/facilitymenu.cpp \
+    gui/queuemenu.cpp \
+    src/gui/windowupdater.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
@@ -44,5 +50,7 @@ SUBDIRS += \
 DISTFILES+= \
         shaders/shader.frag
 
-FORMS +=
+FORMS += \
+    gui/facilitymenu.ui \
+    gui/queuemenu.ui
 
