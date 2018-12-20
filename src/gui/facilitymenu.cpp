@@ -1,5 +1,4 @@
-#include "facilitymenu.hpp"
-#include "ui_facilitymenu.h"
+#include "gui/facilitymenu.hpp"
 
 facilityMenu::facilityMenu(QWidget *parent) :
 	QWidget(parent),

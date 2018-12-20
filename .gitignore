@@ -3,7 +3,8 @@
 *autosave
 *.swap
 *.swp
-*.pro.user*
+*.pro.user
+*~
 
 # Compiled Object files
 *.slo

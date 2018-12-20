@@ -22,9 +22,8 @@ HEADERS += \
     include/particle-system/core/emptyattractor.hpp \
     include/particle-system/core/particlesystem.hpp \
     include/particle-system/graphics/particlesdrawer.hpp \
-    gui/facilitymenu.hpp \
-    gui/qsfmlintegration.hpp \
-    gui/particlesystemwindow.hpp
+    include/gui/qsfmlintegration.hpp \
+    include/gui/particlesystemwindow.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -35,9 +34,9 @@ SOURCES += \
     src/particle-system/core/basicattractor.cpp \
     src/particle-system/core/particlesystem.cpp \
     src/particle-system/graphics/particlesdrawer.cpp \
-    gui/facilitymenu.cpp \
-    gui/qsfmlintegration.cpp \
-    gui/particlesystemwindow.cpp
+    src/gui/qsfmlintegration.cpp \
+    src/gui/particlesystemwindow.cpp \
+    src/particle-system/core/emitter.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
@@ -45,6 +44,5 @@ SUBDIRS += \
 DISTFILES+= \
         shaders/shader.frag
 
-FORMS += \
-    gui/facilitymenu.ui
+FORMS +=
 

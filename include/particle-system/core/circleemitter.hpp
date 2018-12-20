@@ -14,7 +14,7 @@ class CircleEmitter : public Emitter
 public:
 	CircleEmitter(float posX, float posY, float emissionsPerSecond);
 	virtual ~CircleEmitter();
-	virtual vector<Particle> emit(float deltaTime);
+	virtual vector<Particle> emit(float deltaTime) override;
 
 private:
 	float emissionSize;
