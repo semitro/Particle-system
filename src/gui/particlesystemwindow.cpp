@@ -5,13 +5,14 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 	: QSFMLCanvas(parent, position, size)
 {
 
-	facilityMenu = new FacilityMenu(this);
+//	facilityMenu = new FacilityMenu(this);
 }
 
 void ParticleSystemWindow::OnInit(){
 	this->attractors = new vector<Attractor*>();
-	attractors->push_back(new BasicAttractor(700, 400, 0.005f));
-	this->particleSystem = new ParticleSystem(new CircleEmitter(50, 200, 0.001f), new ParticleLaw(&newtonLaw),
+	attractors->push_back(new Facility(500, 600, 20, 15.f, DISTRIBUTION_LAW::DET));
+	this->particleSystem = new ParticleSystem(new CircleEmitter(50, 200, 0.001f),
+											  new ParticleLaw(&newtonLaw),
 						attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
 	this->time = 0.f;
@@ -20,7 +21,7 @@ void ParticleSystemWindow::OnInit(){
 }
 
 void ParticleSystemWindow::mousePressEvent ( QMouseEvent * event ){
-	facilityMenu->show();
+//	facilityMenu->show();
 }
 
 void ParticleSystemWindow::OnUpdate(){

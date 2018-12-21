@@ -11,7 +11,7 @@
 #include "particle-system/core/circleemitter.hpp"
 #include "particle-system/core/newtonlaw.hpp"
 #include "particle-system/core/attractor.hpp"
-#include "particle-system/core/basicattractor.hpp"
+#include "smm/facility.hpp"
 #include "gui/facilitymenu.h"
 
 #define WORLD_TIME_SPEED 950000.f

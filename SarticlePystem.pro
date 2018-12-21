@@ -25,7 +25,12 @@ HEADERS += \
     include/gui/qsfmlintegration.hpp \
     include/gui/particlesystemwindow.hpp \
     gui/facilitymenu.h \
-    gui/queuemenu.h
+    gui/queuemenu.h \
+    include/smm/facility.hpp \
+    include/smm/smmqueue.hpp \
+    include/particle-system/core/retainingattractor.hpp \
+    include/smm/agent.hpp \
+    include/smm/groundmath.h
 
 SOURCES += \
     src/main.cpp \
@@ -40,7 +45,10 @@ SOURCES += \
     src/gui/particlesystemwindow.cpp \
     src/particle-system/core/emitter.cpp \
     gui/facilitymenu.cpp \
-    gui/queuemenu.cpp
+    gui/queuemenu.cpp \
+    src/particle-system/core/retainingattractor.cpp \
+    src/smm/agent.cpp \
+    src/smm/facility.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
