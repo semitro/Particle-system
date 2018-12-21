@@ -12,8 +12,10 @@
 #include "particle-system/core/newtonlaw.hpp"
 #include "particle-system/core/attractor.hpp"
 #include "particle-system/core/basicattractor.hpp"
+#include "gui/facilitymenu.h"
 
 #define WORLD_TIME_SPEED 950000.f
+
 
 // intgrate qt and sfml
 class ParticleSystemWindow : public QSFMLCanvas
@@ -21,7 +23,8 @@ class ParticleSystemWindow : public QSFMLCanvas
 public:
 	~ParticleSystemWindow();
 	ParticleSystemWindow(QWidget* parent, const QPoint& position, const QSize& size);
-
+protected:
+	void mousePressEvent(QMouseEvent *);
 private:
 	vector<Attractor*> *attractors;
 	ParticleSystem *particleSystem;
@@ -29,7 +32,7 @@ private:
 	Clock clock;
 	QTimer timer;
 	float time;
-
+	FacilityMenu *facilityMenu;
 	virtual void OnInit();
 	virtual void OnUpdate();
 private slots:

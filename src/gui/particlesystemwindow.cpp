@@ -5,6 +5,7 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 	: QSFMLCanvas(parent, position, size)
 {
 
+	facilityMenu = new FacilityMenu(this);
 }
 
 void ParticleSystemWindow::OnInit(){
@@ -16,6 +17,10 @@ void ParticleSystemWindow::OnInit(){
 	this->time = 0.f;
 
 
+}
+
+void ParticleSystemWindow::mousePressEvent ( QMouseEvent * event ){
+	facilityMenu->show();
 }
 
 void ParticleSystemWindow::OnUpdate(){
