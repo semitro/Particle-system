@@ -12,6 +12,7 @@
 #include "particle-system/core/newtonlaw.hpp"
 #include "particle-system/core/attractor.hpp"
 #include "smm/facility.hpp"
+#include "smm/smmqueue.hpp"
 #include "gui/facilitymenu.h"
 
 #define WORLD_TIME_SPEED 950000.f

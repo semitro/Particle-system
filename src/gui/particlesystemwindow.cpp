@@ -10,8 +10,9 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 
 void ParticleSystemWindow::OnInit(){
 	this->attractors = new vector<Attractor*>();
-	attractors->push_back(new Facility(500, 600, 20, 0.9f, DISTRIBUTION_LAW::DET));
-	this->particleSystem = new ParticleSystem(new CircleEmitter(50, 200, 0.001f),
+	attractors->push_back(new Facility(600, 400, 20, 2.5f, DISTRIBUTION_LAW::DET));
+	attractors->push_back(new SmmQueue(200, 200, 20, (Facility*)&((*attractors)[0])));
+	this->particleSystem = new ParticleSystem(new CircleEmitter(50, 400, 0.001f),
 											  new ParticleLaw(&newtonLaw),
 						attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());

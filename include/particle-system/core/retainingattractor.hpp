@@ -3,9 +3,6 @@
 
 #include "attractor.hpp"
 
-#define PARTICLE_HAS_NOT_BEEN_IN_ATTRACTOR 0
-#define PARTICLE_IS_IN_ATTRACTOR 1
-#define PARTICLE_HAS_BEEN_IN_ATTRACTOR 2
 
 // hold particle
 class RetainingAttractor : public Attractor{
@@ -18,8 +15,13 @@ public:
 	virtual void attract(vector<Particle> &particles, float deltaTime) override;
 protected:
 	float myRadius;
-	virtual bool releaseCondition(Particle &p, float deltaTime)=0;
+	virtual bool releaseCondition      (Particle &p, float deltaTime)=0;
+	virtual bool doINeedAttract        (Particle &p, float deltaTime)=0;
+	virtual void particleHereHandler   (Particle &p, float deltaTime)=0;
+	virtual void particleReleaseHandler(Particle &p, float deltaTime)=0;
+
 	float m;
+	size_t particlesNumber; // what are in the zone of retaining
 private:
 	bool here(Particle &p);
 };

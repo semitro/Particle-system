@@ -12,15 +12,20 @@ public:
 	Facility(float x, float y, size_t capacity,
 			 float cultivationTime, DISTRIBUTION_LAW cultivationLaw);
 	~Facility() override;
+	bool canAccept();
 protected:
 	bool continueToProcess(Particle &p, float dTime);
 	DISTRIBUTION_LAW cultivationLaw;
-
-	// RetainingAttractor interface
-protected:
-	virtual bool releaseCondition(Particle &p, float deltaTime) override;
+	size_t capacity;
 	float b; // cultivation time
 	DISTRIBUTION_LAW distributionLaw;
+
+	// Agent interface
+protected:
+	virtual bool isItTimeToReleaseTransact(Transact &t, float deltaTime) override;
+	virtual bool amIGoingToHandle(Transact &t, float dT) override;
+	virtual void transactHereHandler(Transact &t, float deltaTime) override;
+	virtual void transactReleaseHandler(Transact &p, float deltaTime) override;
 };
 
 #endif // FACILITY_HPP

@@ -9,8 +9,28 @@ Facility::Facility(float x, float y, size_t capacity,
 
 Facility::~Facility(){}
 
-bool Facility::releaseCondition(Particle &p, float deltaTime)
+bool Facility::canAccept()
 {
-	p.f1 += deltaTime;
-	return p.f1 >= b;
+	return particlesNumber < capacity;
+}
+
+bool Facility::isItTimeToReleaseTransact(Transact &p, float deltaTime)
+{
+	p.facilityData[0].timeOfBeing += deltaTime;
+	return p.facilityData[0].timeOfBeing >= b;
+}
+
+bool Facility::amIGoingToHandle(Transact &t, float dT)
+{
+
+}
+
+void Facility::transactHereHandler(Transact &t, float deltaTime)
+{
+
+}
+
+void Facility::transactReleaseHandler(Transact &p, float deltaTime)
+{
+
 }
