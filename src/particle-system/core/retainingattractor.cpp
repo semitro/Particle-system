@@ -22,33 +22,30 @@ void RetainingAttractor::attract(vector<Particle> &particles, float dT){
 	for(size_t i = 0; i < particles.size(); i++){
 		Particle &p = (particles[i]);
 
-		if(!doINeedAttract(p, dT))
-			continue;
-
-//		if(p.p1 == PARTICLE_HAS_BEEN_IN_ATTRACTOR)
+//		if(!doINeedAttract(p, dT))
 //			continue;
 
-		float dx = this->x - p.x;
-		float dy = this->y - p.y;
-
-		p.vx += m*dx*dT;
-		p.vy += m*dy*dT;
 
 		if(here(p)){
 			particleHereHandler(p, dT);
 			particlesNumber++;
-//			p.p1 = PARTICLE_IS_IN_ATTRACTOR;
 			p.vx = 0;
 			p.vy = 0;
+			p.x = 0;
+			p.y = 0;
+		}
+		else{ // attract only if it's not in the circle
+			float dx = this->x - p.x;
+			float dy = this->y - p.y;
+			p.vx += m*dT * (dx > 0 ? 1 : -1);
+			p.vy += m*dT * (dy > 0 ? 1 : -1);
 		}
 
 		if(here(p) && releaseCondition(p, dT)){
 			particlesNumber--;
 			particleReleaseHandler(p, dT);
-//			p.p1 = PARTICLE_HAS_BEEN_IN_ATTRACTOR;
-			p.vx = 15.f;
-			p.vy = -10.f;
+//			p.vx = 15.f;
+//			p.vy = -10.f;
 		}
-//		if(p.p1 == PARTICLE_IS_IN_ATTRACTOR)
 	}
 }

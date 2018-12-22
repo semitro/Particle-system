@@ -8,14 +8,14 @@
 
 #include "particle-system/core/particlesystem.hpp"
 #include "particle-system/graphics/particlesdrawer.hpp"
-#include "particle-system/core/circleemitter.hpp"
+#include "particle-system/core/dotemitter.hpp"
 #include "particle-system/core/newtonlaw.hpp"
 #include "particle-system/core/attractor.hpp"
 #include "smm/facility.hpp"
 #include "smm/smmqueue.hpp"
 #include "gui/facilitymenu.h"
 
-#define WORLD_TIME_SPEED 950000.f
+#define WORLD_TIME_SPEED 10.f
 
 
 // intgrate qt and sfml

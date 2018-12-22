@@ -33,6 +33,7 @@ Transact &Agent::getTransact(unsigned long particle_id)
 {
 	if(allTheTransacts->size() < particle_id)
 		allTheTransacts->resize(particle_id + 100);
+
 	if((*allTheTransacts)[particle_id] == nullptr){
 		(*allTheTransacts)[particle_id] = new Transact(particle_id);
 	}

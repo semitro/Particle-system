@@ -31,7 +31,8 @@ HEADERS += \
     include/particle-system/core/retainingattractor.hpp \
     include/smm/agent.hpp \
     include/smm/groundmath.h \
-    include/smm/transact.hpp
+    include/smm/transact.hpp \
+    include/particle-system/core/dotemitter.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -52,7 +53,8 @@ SOURCES += \
     src/smm/facility.cpp \
     src/particle-system/core/particle.cpp \
     src/smm/smmqueue.cpp \
-    src/smm/transact.cpp
+    src/smm/transact.cpp \
+    src/particle-system/core/dotemitter.cpp
 
 SUBDIRS += \
     SarticlePystem.pro

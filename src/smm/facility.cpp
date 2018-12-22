@@ -22,7 +22,7 @@ bool Facility::isItTimeToReleaseTransact(Transact &p, float deltaTime)
 
 bool Facility::amIGoingToHandle(Transact &t, float dT)
 {
-
+	return false;
 }
 
 void Facility::transactHereHandler(Transact &t, float deltaTime)

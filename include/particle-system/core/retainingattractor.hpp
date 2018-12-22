@@ -3,7 +3,6 @@
 
 #include "attractor.hpp"
 
-
 // hold particle
 class RetainingAttractor : public Attractor{
 
