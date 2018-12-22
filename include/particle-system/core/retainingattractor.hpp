@@ -3,6 +3,10 @@
 
 #include "attractor.hpp"
 
+#define PARTICLE_HAS_NOT_BEEN_IN_ATTRACTOR 0
+#define PARTICLE_IS_IN_ATTRACTOR 1
+#define PARTICLE_HAS_BEEN_IN_ATTRACTOR 2
+
 // hold particle
 class RetainingAttractor : public Attractor{
 

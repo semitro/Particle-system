@@ -19,6 +19,8 @@ protected:
 	// RetainingAttractor interface
 protected:
 	virtual bool releaseCondition(Particle &p, float deltaTime) override;
+	float b; // cultivation time
+	DISTRIBUTION_LAW distributionLaw;
 };
 
 #endif // FACILITY_HPP

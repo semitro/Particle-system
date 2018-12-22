@@ -4,6 +4,9 @@ void newtonLaw(vector<Particle> &particles)
 {
 	for(size_t i = 0; i < particles.size(); i++)
 		for(size_t j = 0; i < particles.size(); i++){
+			if(particles[j].p1 == 1 || particles[i].p1 == 1) // 1 - is in attractor. Sorry todo - fix
+				continue;
+
 			float dx = particles[j].x - particles[i].x;
 			float dy = particles[j].y - particles[i].y;
 			float distance = sqrtf(dx*dx + dy*dy);

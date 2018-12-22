@@ -2,7 +2,7 @@
 
 Facility::Facility(float x, float y, size_t capacity,
 		 float cultivationTime, DISTRIBUTION_LAW cultivationLaw)
-	: Agent(x, y)
+	: Agent(x, y), b(cultivationTime), distributionLaw(cultivationLaw)
 {
 
 }
@@ -11,5 +11,6 @@ Facility::~Facility(){}
 
 bool Facility::releaseCondition(Particle &p, float deltaTime)
 {
-	return false;
+	p.f1 += deltaTime;
+	return p.f1 >= b;
 }
