@@ -7,8 +7,12 @@
 #define AGENT_HOLDING_RADUIS   49.f
 class Agent : public RetainingAttractor{
 public:
-	Agent(float x, float y, bool(*releaseCondition)(Particle &p, float dT));
+	Agent(float x, float y);
 	~Agent();
+
+	// RetainingAttractor interface
+protected:
+	virtual bool releaseCondition(Particle &p, float deltaTime)=0;
 };
 
 #endif // FACILITY_HPP

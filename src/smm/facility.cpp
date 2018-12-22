@@ -1,15 +1,15 @@
 #include "smm/facility.hpp"
 
-
-bool continueToProcess(Particle &p, float dTime){
-	return rand()% 2 == 0;
-}
-
 Facility::Facility(float x, float y, size_t capacity,
 		 float cultivationTime, DISTRIBUTION_LAW cultivationLaw)
-	: Agent(x, y, &continueToProcess)
+	: Agent(x, y)
 {
 
 }
 
 Facility::~Facility(){}
+
+bool Facility::releaseCondition(Particle &p, float deltaTime)
+{
+	return false;
+}

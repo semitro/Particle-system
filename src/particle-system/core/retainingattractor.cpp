@@ -1,12 +1,10 @@
 #include "particle-system/core/retainingattractor.hpp"
 
 RetainingAttractor::RetainingAttractor(float x, float y, float m,
-									   float retainRaduis,
-									   bool (*releaseCondition)(Particle &, float))
+									   float retainRaduis)
 	: Attractor(x, y),
 	  m(m),
-	  myRadius(retainRaduis),
-	  releaseCondition(releaseCondition)
+	  myRadius(retainRaduis)
 {
 
 }

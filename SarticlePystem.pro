@@ -48,7 +48,8 @@ SOURCES += \
     gui/queuemenu.cpp \
     src/particle-system/core/retainingattractor.cpp \
     src/smm/agent.cpp \
-    src/smm/facility.cpp
+    src/smm/facility.cpp \
+    src/particle-system/core/particle.cpp
 
 SUBDIRS += \
     SarticlePystem.pro

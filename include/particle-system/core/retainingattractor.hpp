@@ -8,14 +8,13 @@ class RetainingAttractor : public Attractor{
 
 public:
 	RetainingAttractor(float x, float y, float m,
-					   float retainRaduis,
-						bool (*releaseCondition)(Particle &p, float deltaTime));
+					   float retainRaduis);
 	virtual ~RetainingAttractor() override;
 	// Attractor interface
 	virtual void attract(vector<Particle> &particles, float deltaTime) override;
 protected:
 	float myRadius;
-	bool (*releaseCondition)(Particle &p, float deltaTime);
+	virtual bool releaseCondition(Particle &p, float deltaTime)=0;
 	float m;
 private:
 	bool here(Particle &p);
