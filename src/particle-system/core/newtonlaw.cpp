@@ -1,6 +1,6 @@
 #include "particle-system/core/newtonlaw.hpp"
 
-void newtonLaw(vector<Particle> &particles)
+void newtonLaw(vector<Particle> &particles, float dT)
 {
 	for(size_t i = 0; i < particles.size(); i++)
 //		for(size_t j = 0; i < particles.size(); i++){
@@ -19,7 +19,7 @@ void newtonLaw(vector<Particle> &particles)
 //		}
 
 	for(size_t i = 0; i < particles.size(); i++){
-		particles[i].x += particles[i].vx;
-		particles[i].y += particles[i].vy;
+		particles[i].x += particles[i].vx * dT;
+		particles[i].y += particles[i].vy * dT;
 	}
 }

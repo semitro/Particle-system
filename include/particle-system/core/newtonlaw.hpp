@@ -10,5 +10,5 @@
 using std::vector;
 using std::size_t;
 
-void newtonLaw(vector<Particle> &particles);
+void newtonLaw(vector<Particle> &particles, float dT);
 #endif // NEWTONLAW_HPP

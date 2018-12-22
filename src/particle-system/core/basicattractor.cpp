@@ -14,7 +14,7 @@ void BasicAttractor::attract(vector<Particle> &particles, float deltaTime)
 		float dx = this->x - particles[i].x;
 		float dy = this->y - particles[i].y;
 		if(dx < MIN_DISTANCE || dy < MIN_DISTANCE)
-            ;
+			;
 
 		particles[i].vx += this->m*dx*deltaTime;
 		particles[i].vy += this->m*dy*deltaTime;

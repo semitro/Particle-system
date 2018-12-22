@@ -1,11 +1,11 @@
 #include "particle-system/core/particlelaw.hpp"
 
-ParticleLaw::ParticleLaw(void law(vector<Particle> &)):law(law)
+ParticleLaw::ParticleLaw(void law(vector<Particle> &, float)):law(law)
 {
 }
 
-void ParticleLaw::process(vector<Particle> &p)
+void ParticleLaw::process(vector<Particle> &p, float dT)
 {
-		law(p);
+		law(p, dT);
 
 }

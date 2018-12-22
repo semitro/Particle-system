@@ -13,10 +13,10 @@ using std::vector;
 class ParticleLaw
 {
 public:
-	ParticleLaw(void (*law)(vector<Particle> &));
-	void process(vector<Particle> &p);
+	ParticleLaw(void (*law)(vector<Particle> &, float deltaTime));
+	void process(vector<Particle> &p, float dT);
 private:
-	void (*law)(vector<Particle> &);
+	void (*law)(vector<Particle> &, float dT);
 };
 
 #endif // PARTICLELAW_H

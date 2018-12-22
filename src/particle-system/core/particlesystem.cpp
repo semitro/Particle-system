@@ -31,7 +31,7 @@ void ParticleSystem::update(float delta_time){
 	this->doEmission(delta_time);
 	for(size_t i = 0; i < this->attractors->size(); i++)
 		this->attractors->at(i)->attract(*this->particles, delta_time);
-	this->law->process(*this->particles);
+	this->law->process(*this->particles, delta_time);
 }
 
 

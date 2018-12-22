@@ -15,7 +15,7 @@
 #include "smm/smmqueue.hpp"
 #include "gui/facilitymenu.h"
 
-#define WORLD_TIME_SPEED 10.f
+#define WORLD_TIME_SPEED 100000.f
 
 
 // intgrate qt and sfml
