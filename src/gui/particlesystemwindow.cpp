@@ -9,21 +9,29 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 }
 
 void ParticleSystemWindow::OnInit(){
+
+	this->parametrsWindow.show();
 	this->queueChart = new Chart;
 	this->queueChartView = new QChartView(queueChart);
 	queueChartView->setRenderHint(QPainter::Antialiasing);
-	queueChartView->show();
+//	queueChartView->show();
 
 	this->particleChart = new Chart;
 	this->particleChartView = new QChartView(particleChart);
-	particleChartView->show();
+
+	this->facilityChart = new Chart;
+	this->facilityChartView = new QChartView(facilityChart);
+	facilityChartView->setGeometry(500, 500, 100, 100);
+	facilityChartView->show();
+
+//	particleChartView->show();
 
 	this->attractors = new vector<Attractor*>();
-//	Facility *facility = new Facility(600, 400, 20, 2.5f, DISTRIBUTION_LAW::DET);
-//	attractors->push_back(facility);
-	this->queue = new SmmQueue(300, 300, 20, nullptr);
-	attractors->push_back(queue);//facility));
-	this->particleSystem = new ParticleSystem(new DotEmitter(50, 400, 2.5f, 20),
+	facility = new Facility(600, 400, 5, 5.5f, DISTRIBUTION_LAW::DET);
+	attractors->push_back(facility);
+	this->queue = new SmmQueue(300, 300, 20, facility);
+//	attractors->push_back(queue);
+	this->particleSystem = new ParticleSystem(new DotEmitter(50, 400, 2.5f, 25),
 											  new ParticleLaw(&newtonLaw),
 						attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
@@ -43,7 +51,8 @@ void ParticleSystemWindow::OnUpdate(){
 	RenderWindow::clear(Color(250, 25, 25));
 	particleSystem->update(dTime/WORLD_TIME_SPEED);
 	particleDrawer->drawPaticles(*this, time);
-	queueChart->addValue(time, queue->getTransactsNumber());
-	qDebug() << "Value added" << queue->getTransactsNumber();
 	particleChart->addValue(time, particleSystem->getParticles()->size());
+	facilityChart->addValue(time, this->facility->getTransactsNumber());
+	queueChart->addValue(time, queue->getTransactsNumber());
+
 }

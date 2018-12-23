@@ -33,7 +33,8 @@ HEADERS += \
     include/smm/groundmath.h \
     include/smm/transact.hpp \
     include/particle-system/core/dotemitter.hpp \
-    include/smm/charts/chart.hpp
+    include/smm/charts/chart.hpp \
+    gui/generalparametrs.h
 
 SOURCES += \
     src/main.cpp \
@@ -56,7 +57,8 @@ SOURCES += \
     src/smm/smmqueue.cpp \
     src/smm/transact.cpp \
     src/particle-system/core/dotemitter.cpp \
-    src/smm/charts/chart.cpp
+    src/smm/charts/chart.cpp \
+    gui/generalparametrs.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
@@ -66,5 +68,6 @@ DISTFILES+= \
 
 FORMS += \
     gui/facilitymenu.ui \
-    gui/queuemenu.ui
+    gui/queuemenu.ui \
+    gui/generalparametrs.ui
 

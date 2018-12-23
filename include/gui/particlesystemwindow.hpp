@@ -15,6 +15,7 @@
 #include "smm/facility.hpp"
 #include "smm/smmqueue.hpp"
 #include "gui/facilitymenu.h"
+#include "gui/generalparametrs.h"
 #include "smm/charts/chart.hpp"
 
 #define WORLD_TIME_SPEED 500000.f
@@ -38,13 +39,18 @@ private:
 
 	Chart *particleChart;
 	QChartView *particleChartView;
+
 	Facility *facility;
+	Chart *facilityChart;
+	QChartView *facilityChartView;
+
 	Clock clock;
 	QTimer timer;
 	float time;
 	FacilityMenu *facilityMenu;
 	virtual void OnInit();
 	virtual void OnUpdate();
+	GeneralParametrs parametrsWindow;
 private slots:
 	void onTimeOut();
 };

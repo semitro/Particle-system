@@ -1,8 +1,11 @@
 #include "smm/facility.hpp"
+#include <QtDebug>
 
 Facility::Facility(float x, float y, size_t capacity,
 		 float cultivationTime, DISTRIBUTION_LAW cultivationLaw)
-	: Agent(x, y), b(cultivationTime), distributionLaw(cultivationLaw)
+	: Agent(x, y), b(cultivationTime),
+	  distributionLaw(cultivationLaw), capacity(capacity),
+	  transactsNumber(0), attracting(0)
 {
 
 }
@@ -11,26 +14,54 @@ Facility::~Facility(){}
 
 bool Facility::canAccept()
 {
-	return particlesNumber < capacity;
+	return transactsNumber < capacity;
+}
+size_t Facility::howManyCanAccept(){
+	return capacity - transactsNumber;
+}
+size_t Facility::getTransactsNumber()
+{
+	return this->transactsNumber;
 }
 
-bool Facility::isItTimeToReleaseTransact(Transact &p, float deltaTime)
+bool Facility::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 {
-	p.facilityData[0].timeOfBeing += deltaTime;
-	return p.facilityData[0].timeOfBeing >= b;
+	return t.facilityData[0].timeOfBeing >= b;
 }
 
 bool Facility::amIGoingToHandle(Transact &t, float dT)
 {
-	return false;
+	qDebug() << "accept: " << howManyCanAccept();
+	if(t.queueData[0].state == StateInQueue::LEAVED
+			&& t.facilityData[0].state == StateInFacility::READY
+			&& canAccept()
+			&& attracting < howManyCanAccept()// between
+			){
+		this->attracting++;
+		return true;
+	}
+	else
+		return false;
 }
 
 void Facility::transactHereHandler(Transact &t, float deltaTime)
 {
+	if(t.facilityData[0].state == StateInFacility::READY
+			&& canAccept()){
+		t.facilityData[0].state = StateInFacility::CULTIVATING;
+		this->transactsNumber++;
+	}
 
+	if(t.facilityData[0].state == StateInFacility::CULTIVATING){
+		t.facilityData[0].timeOfBeing += deltaTime;
+	}
 }
-
 void Facility::transactReleaseHandler(Transact &p, float deltaTime)
 {
-
+	if(p.facilityData[0].state == StateInFacility::CULTIVATING){
+		this->transactsNumber--;
+		this->attracting--;
+		qDebug() << "attracting: " << attracting;
+		p.facilityData[0].state = StateInFacility::PROCESSED;
+	}
 }

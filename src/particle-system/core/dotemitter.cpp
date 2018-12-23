@@ -18,7 +18,7 @@ vector<Particle> DotEmitter::emit(float deltaTime)
 {
 	this->nextEmissionTime -= deltaTime;
 //	qDebug() << "Next emission" << nextEmissionTime;
-	if(nextEmissionTime <= 0.f && emitted <= maxEmissions){
+	if(nextEmissionTime <= 0.f && emitted < maxEmissions){
 		emitted++;
 		nextEmissionTime = this->mTime;
 		vector<Particle> p(1);

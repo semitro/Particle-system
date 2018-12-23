@@ -13,10 +13,14 @@ public:
 			 float cultivationTime, DISTRIBUTION_LAW cultivationLaw);
 	~Facility() override;
 	bool canAccept();
+	size_t howManyCanAccept();
+	size_t getTransactsNumber();
 protected:
 	bool continueToProcess(Particle &p, float dTime);
 	DISTRIBUTION_LAW cultivationLaw;
 	size_t capacity;
+	size_t transactsNumber;
+	size_t attracting; // between queue and facility
 	float b; // cultivation time
 	DISTRIBUTION_LAW distributionLaw;
 
