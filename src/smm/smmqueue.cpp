@@ -3,12 +3,17 @@
 #include <QtDebug>
 
 SmmQueue::SmmQueue(float x, float y, size_t capacity, Facility *master)
-	:Agent(x, y), capacity(capacity), master(master)
+	:Agent(x, y), capacity(capacity), trasactsHere(0), master(master)
 {
 
 }
 
 SmmQueue::~SmmQueue(){}
+
+size_t SmmQueue::getTransactsNumber()
+{
+	return this->trasactsHere;
+}
 
 bool SmmQueue::amIGoingToHandle(Transact &t, float dT)
 {
@@ -16,7 +21,12 @@ bool SmmQueue::amIGoingToHandle(Transact &t, float dT)
 }
 void SmmQueue::transactHereHandler(Transact &t, float deltaTime)
 {
-	t.queueData[0].state = StateInQueue::QUEUEING;
+	if(t.queueData->state == StateInQueue::HAVE_NEVER_BEEN){
+//			&& this->trasactsHere < capacity){
+		trasactsHere++;
+		t.queueData[0].state = StateInQueue::QUEUEING;
+	}
+
 //	if(t.queueData[0].state != StateInQueue::LEAVED)
 //		t.queueData[0].state = t.q
 }
@@ -24,12 +34,15 @@ void SmmQueue::transactHereHandler(Transact &t, float deltaTime)
 // what does it mean to release transact?
 void SmmQueue::transactReleaseHandler(Transact &p, float deltaTime)
 {
-	p.queueData[0].state = LEAVED;
+	if(p.queueData[0].state == StateInQueue::QUEUEING){
+		trasactsHere--;
+		p.queueData[0].state = LEAVED;
+	}
 }
 
 bool SmmQueue::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 {
 	t.queueData[0].timeOfBeing += deltaTime;
-	return false;//t.queueData[0].timeOfBeing > 10.f;
+	return t.queueData[0].timeOfBeing > 50.f;
 	// master->canAccept();
 }

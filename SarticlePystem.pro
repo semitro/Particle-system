@@ -32,7 +32,8 @@ HEADERS += \
     include/smm/agent.hpp \
     include/smm/groundmath.h \
     include/smm/transact.hpp \
-    include/particle-system/core/dotemitter.hpp
+    include/particle-system/core/dotemitter.hpp \
+    include/smm/charts/chart.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -54,7 +55,8 @@ SOURCES += \
     src/particle-system/core/particle.cpp \
     src/smm/smmqueue.cpp \
     src/smm/transact.cpp \
-    src/particle-system/core/dotemitter.cpp
+    src/particle-system/core/dotemitter.cpp \
+    src/smm/charts/chart.cpp
 
 SUBDIRS += \
     SarticlePystem.pro

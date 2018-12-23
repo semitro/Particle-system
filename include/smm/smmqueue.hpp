@@ -13,14 +13,17 @@
 #define PARTICLE_LEAVED_QUEUE 3
 
 
-class SmmQueue : public Agent{
+class SmmQueue : public Agent
+{
 public:
 	SmmQueue(float x, float y, size_t capacity, Facility *master);
-	~SmmQueue();
+	virtual ~SmmQueue() override;
+
+	size_t getTransactsNumber();
 private:
 	Facility* master;
 	size_t 	  capacity;
-
+	size_t    trasactsHere;
 	// Agent interface
 protected:
 	virtual bool amIGoingToHandle(Transact &t, float dT) override;

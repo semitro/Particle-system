@@ -10,8 +10,9 @@
 #include <signal.h>
 #include <QObject>
 #include <QFrame>
-
+#include "smm/charts/chart.hpp"
 #include "gui/particlesystemwindow.hpp"
+#include <QtCharts>
 
 #define SHADER_TIME_SPEED 550000.f
 
@@ -23,7 +24,7 @@ int main(int argc, char **argv)
 {
 	QApplication a(argc, argv);
 	QFrame* MainFrame = new QFrame;
-	MainFrame->setWindowTitle("Qt SFML");
+	MainFrame->setWindowTitle("Particle system v");
 	MainFrame->resize(1300, 800);
 	MainFrame->show();
 	ParticleSystemWindow *window = new ParticleSystemWindow(MainFrame,  QPoint(10, 10), QSize(1300, 800));

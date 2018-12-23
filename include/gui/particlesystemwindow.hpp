@@ -5,6 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <QtWidgets>
+#include <QtCharts>
 
 #include "particle-system/core/particlesystem.hpp"
 #include "particle-system/graphics/particlesdrawer.hpp"
@@ -14,8 +15,8 @@
 #include "smm/facility.hpp"
 #include "smm/smmqueue.hpp"
 #include "gui/facilitymenu.h"
-
-#define WORLD_TIME_SPEED 100000.f
+#include "smm/charts/chart.hpp"
+#define WORLD_TIME_SPEED 1000.f
 
 
 // intgrate qt and sfml
@@ -30,6 +31,12 @@ private:
 	vector<Attractor*> *attractors;
 	ParticleSystem *particleSystem;
 	ParticlesDrawer *particleDrawer;
+	SmmQueue *queue;
+
+	Chart *queueChart;
+	QChartView *queueChartView;
+
+	Facility *facility;
 	Clock clock;
 	QTimer timer;
 	float time;
