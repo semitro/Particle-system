@@ -39,7 +39,6 @@ struct Transact{
 		queueData[0].currentTime = 0.f;
 		facilityData[0].currentTime = 0.f;
 		facilityData[0].currentTime = 0.f;
-
 	}
 
 	unsigned long  id, particleId;

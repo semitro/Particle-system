@@ -27,8 +27,10 @@ private:
 	QStringList m_titles;
 	QValueAxis *m_axis;
 	qreal m_step;
-	qreal m_x;
-	qreal m_y;
+	qreal max_x;
+	qreal min_x;
+	qreal min_y;
+	qreal max_y;
 };
 
 #endif // CHART_HPP

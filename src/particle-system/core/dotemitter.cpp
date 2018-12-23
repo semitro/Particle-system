@@ -1,9 +1,8 @@
 #include "particle-system/core/dotemitter.hpp"
 
 
-DotEmitter::DotEmitter(float posX, float posY, float emissionSize):
-	Emitter(posX, posY),
-	emissionSize(emissionSize)
+DotEmitter::DotEmitter(float posX, float posY, float mTime):
+	Emitter(posX, posY), mTime(mTime)
 {
 
 }
@@ -15,22 +14,19 @@ DotEmitter::~DotEmitter()
 
 vector<Particle> DotEmitter::emit(float deltaTime)
 {
-	static float nextEmission = this->emissionSize;
+	static int x = 0;
+	x++;
+	this->nextEmissionTime -= deltaTime;
 
-	nextEmission -= deltaTime;
-
-	if(nextEmission > 0.f){
-		vector<Particle> p(0);
+	if(nextEmissionTime <= 0.f && x < 2){
+		nextEmissionTime = this->mTime;
+		vector<Particle> p(1);
+		p[0].x  = this->x;
+		p[0].y  = this->y;
 		return p;
 	}
-
-	nextEmission = this->emissionSize;
-	size_t emissionNumber = 1;
-
-	vector<Particle> p(emissionNumber);
-	for(size_t i = 0; i < emissionNumber; i++){
-		p[i].x  = this->x;
-		p[i].y  = this->y;
-  }
-  return p;
+	else{
+		vector<Particle> p(0); // empty one
+		return p;
+	}
 }

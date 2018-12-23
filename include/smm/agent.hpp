@@ -5,9 +5,9 @@
 #include "transact.hpp"
 
 
-#define AGENT_ATTRACTION_FORCE 0.0008f
+#define AGENT_ATTRACTION_FORCE 21.8f
 #define AGENT_HOLDING_RADUIS   10.5f
-#define INITAL_TRANSACT_VECOTOR_SIZE 10
+#define INITAL_TRANSACT_VECOTOR_SIZE 1000000
 
 class Agent : public RetainingAttractor{
 public:

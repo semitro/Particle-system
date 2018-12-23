@@ -16,8 +16,8 @@
 #include "smm/smmqueue.hpp"
 #include "gui/facilitymenu.h"
 #include "smm/charts/chart.hpp"
-#define WORLD_TIME_SPEED 1000.f
 
+#define WORLD_TIME_SPEED 500000.f
 
 // intgrate qt and sfml
 class ParticleSystemWindow : public QSFMLCanvas
@@ -36,6 +36,8 @@ private:
 	Chart *queueChart;
 	QChartView *queueChartView;
 
+	Chart *particleChart;
+	QChartView *particleChartView;
 	Facility *facility;
 	Clock clock;
 	QTimer timer;

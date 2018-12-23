@@ -13,6 +13,11 @@ void ParticleSystemWindow::OnInit(){
 	this->queueChartView = new QChartView(queueChart);
 	queueChartView->setRenderHint(QPainter::Antialiasing);
 	queueChartView->show();
+
+	this->particleChart = new Chart;
+	this->particleChartView = new QChartView(particleChart);
+	particleChartView->show();
+
 	this->attractors = new vector<Attractor*>();
 //	Facility *facility = new Facility(600, 400, 20, 2.5f, DISTRIBUTION_LAW::DET);
 //	attractors->push_back(facility);
@@ -39,4 +44,5 @@ void ParticleSystemWindow::OnUpdate(){
 	particleSystem->update(dTime/WORLD_TIME_SPEED);
 	particleDrawer->drawPaticles(*this, time);
 	queueChart->addValue(time, queue->getTransactsNumber());
+	particleChart->addValue(time, particleSystem->getParticles()->size());
 }

@@ -12,12 +12,13 @@ using std::size_t;
 class DotEmitter : public Emitter
 {
 public:
-	DotEmitter(float posX, float posY, float emissionsPerSecond);
+	DotEmitter(float posX, float posY, float mTime);
 	virtual ~DotEmitter();
 	virtual vector<Particle> emit(float deltaTime) override;
 
 private:
-	float emissionSize;
+	float mTime; //
+	float nextEmissionTime;
 };
 
 

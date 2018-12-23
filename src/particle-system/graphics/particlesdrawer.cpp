@@ -27,7 +27,7 @@ void ParticlesDrawer::drawPaticles(RenderTarget &window, float time){
     glowShader.setUniform("baseTexture", preRendered.getTexture());
     glowShader.setUniform("uTime", time/500.f);//SHADER_TIME_SPEED);
 
-    window.draw(*new Sprite(preRendered.getTexture()), renderStates);
+	window.draw(*new Sprite(preRendered.getTexture())); //, renderStates);
 
 }
 
