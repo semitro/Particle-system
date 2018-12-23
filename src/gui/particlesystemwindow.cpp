@@ -23,7 +23,7 @@ void ParticleSystemWindow::OnInit(){
 //	attractors->push_back(facility);
 	this->queue = new SmmQueue(300, 300, 20, nullptr);
 	attractors->push_back(queue);//facility));
-	this->particleSystem = new ParticleSystem(new DotEmitter(50, 400, 0.001f),
+	this->particleSystem = new ParticleSystem(new DotEmitter(50, 400, 2.5f, 20),
 											  new ParticleLaw(&newtonLaw),
 						attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
@@ -44,5 +44,6 @@ void ParticleSystemWindow::OnUpdate(){
 	particleSystem->update(dTime/WORLD_TIME_SPEED);
 	particleDrawer->drawPaticles(*this, time);
 	queueChart->addValue(time, queue->getTransactsNumber());
+	qDebug() << "Value added" << queue->getTransactsNumber();
 	particleChart->addValue(time, particleSystem->getParticles()->size());
 }

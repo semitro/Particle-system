@@ -46,9 +46,9 @@ void Chart::addValue(qreal m_x, qreal m_y)
 	min_y = MIN(min_y, m_y);
 
 	m_series->append(m_x, m_y);
+	qDebug() << "adding" << m_x << " : " << m_y;
 	axisX()->setRange(min_x, max_x);
 	axisY()->setRange(min_y, max_y);
-
 }
 
 void Chart::handleTimeout()

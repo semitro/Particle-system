@@ -36,12 +36,12 @@ void SmmQueue::transactHereHandler(Transact &t, float deltaTime)
 }
 
 // what does it mean to release transact?
-void SmmQueue::transactReleaseHandler(Transact &p, float deltaTime)
+void SmmQueue::transactReleaseHandler(Transact &t, float deltaTime)
 {
-	if(p.queueData[0].state == StateInQueue::QUEUEING){
+	if(t.queueData[0].state == StateInQueue::QUEUEING){
 		trasactsHere--;
-		qDebug() << "GOOD BYE RELEASE";
-		p.queueData[0].state = LEAVED;
+		qDebug() << "GOOD BYE RELEASE" << trasactsHere;
+		t.queueData[0].state = LEAVED;
 	}
 }
 
