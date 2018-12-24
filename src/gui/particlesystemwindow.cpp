@@ -36,9 +36,10 @@ void ParticleSystemWindow::OnUpdate(){
 		// Process events
 	Int64 dTime = clock.getElapsedTime().asMicroseconds();
 	time += dTime;
+	qDebug() << "dTime " << dTime;
 	clock.restart();
 	RenderWindow::clear(Color(250, 25, 25));
-	particleSystem->update(dTime/WORLD_TIME_SPEED);
+	particleSystem->update(1000000.f/WORLD_TIME_SPEED);//dTime/WORLD_TIME_SPEED);
 	particleDrawer->drawPaticles(*this, time);
 //	qDebug() << "Update charts..";
 	resultsWindow->update(time);
