@@ -18,6 +18,7 @@
 #include "gui/generalparametrs.h"
 #include "smm/charts/chart.hpp"
 #include "smm/groundmath.h"
+#include "resultwindow.hpp"
 
 #define WORLD_TIME_SPEED 500000.f
 
@@ -55,6 +56,7 @@ private:
 	FacilityMenu *facilityMenu;
 	virtual void OnInit();
 	virtual void OnUpdate();
+	ResultsWindow *resultsWindow;
 private slots:
 	void onTimeOut();
 };

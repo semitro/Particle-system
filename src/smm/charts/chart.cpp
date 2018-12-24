@@ -28,6 +28,7 @@ Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
 	m_axis->setTickCount(5);
 	axisX()->setRange(0, 10);
 	axisY()->setRange(-5, 10);
+	legend()->hide();
 
 //	m_timer.start();
 }

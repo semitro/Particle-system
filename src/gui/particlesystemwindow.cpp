@@ -10,6 +10,12 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 	facility = new Facility(600, 400, params.facilitySize, params.b, DISTRIBUTION_LAW::DET);
 	queue = new SmmQueue(300, 300, params.queueSize, facility);
 	emitter = new DotEmitter(50, 400, params.avgCreationTime, params.maxParticles);
+	QFrame *newStage = new QFrame;
+	newStage->move(10, 10);
+	newStage->resize(1200, 500);
+	resultsWindow = new ResultsWindow(newStage, queue, facility);
+	resultsWindow->show();
+	newStage->show();
 }
 
 void ParticleSystemWindow::OnInit(){
@@ -25,7 +31,7 @@ void ParticleSystemWindow::OnInit(){
 	this->facilityChart = new Chart;
 	this->facilityChartView = new QChartView(facilityChart);
 	facilityChartView->setGeometry(500, 500, 100, 100);
-	facilityChartView->show();
+//	facilityChartView->show();
 
 //	particleChartView->show();
 
@@ -53,5 +59,6 @@ void ParticleSystemWindow::OnUpdate(){
 	particleChart->addValue(time, particleSystem->getParticles()->size());
 	facilityChart->addValue(time, this->facility->getTransactsNumber());
 	queueChart->addValue(time, queue->getTransactsNumber());
+	resultsWindow->update(time);
 
 }

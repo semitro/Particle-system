@@ -8,7 +8,7 @@ GeneralParametrs::GeneralParametrs(QWidget *parent) :
 {
 	ui->setupUi(this);
 	params.avgCreationTime = 1.f;
-	params.b = 10.f;
+	params.b = 1.f;
 	params.facilitySize = 1;
 	params.maxParticles = 100;
 	params.queueSize = 1;
