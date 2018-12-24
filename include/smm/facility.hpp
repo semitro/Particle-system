@@ -30,6 +30,7 @@ protected:
 	virtual bool amIGoingToHandle(Transact &t, float dT) override;
 	virtual void transactHereHandler(Transact &t, float deltaTime) override;
 	virtual void transactReleaseHandler(Transact &p, float deltaTime) override;
+	virtual void newUpdateHanlder() override;
 };
 
 #endif // FACILITY_HPP

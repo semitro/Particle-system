@@ -1,4 +1,5 @@
 #include "particle-system/graphics/particlesdrawer.hpp"
+#include <QDebug>
 
 ParticlesDrawer::ParticlesDrawer(const vector<Particle> * const particles)
     :particles(particles), glowShader(), renderStates(&glowShader)
@@ -13,7 +14,6 @@ ParticlesDrawer::ParticlesDrawer(const vector<Particle> * const particles)
     glowShader.loadFromFile("shaders/shader.frag", Shader::Fragment);
     glowShader.setUniform("texture", background);
     glowShader.setUniform("iResolution", iResolution);
-
 
 }
 
@@ -32,12 +32,14 @@ void ParticlesDrawer::drawPaticles(RenderTarget &window, float time){
 }
 
 void ParticlesDrawer::paricleToVertexes() const{
+	size_t diff = particles->size() - vertexes->getVertexCount();
     if(vertexes->getVertexCount() < particles->size()) // add particles that appeared
-        for(size_t i = 0; i < particles->size() - vertexes->getVertexCount(); i++)
+		for(size_t i = 0; i < diff; i++)
             vertexes->append(vertexPrototype);
 
-
-    for(size_t i = 0; i < particles->size(); i++){
+	for(size_t i = 0; i < particles->size(); i++){
+		if(i >= vertexes->getVertexCount())
+			qDebug() << "***ARRAY BOUND ERROR***";
         (*vertexes)[i].position.x = (*particles)[i].x;
         (*vertexes)[i].position.y = (*particles)[i].y;
     }

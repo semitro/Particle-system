@@ -28,6 +28,7 @@ protected:
 	virtual bool releaseCondition(Particle &p, float deltaTime) final;
 	virtual bool isItTimeToReleaseTransact(Transact &t, float deltaTime)=0;
 
+	virtual void newUpdateHanlder()=0;
 private:
 	Transact &getTransact(unsigned long particle_id);
 	static vector<Transact*> *allTheTransacts;

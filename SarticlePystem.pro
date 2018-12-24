@@ -62,7 +62,8 @@ SOURCES += \
     src/smm/charts/chart.cpp \
     gui/generalparametrs.cpp \
     src/gui/resultwindow.cpp \
-    src/smm/dustman.cpp
+    src/smm/dustman.cpp \
+    src/smm/groundmath.cpp
 
 SUBDIRS += \
     SarticlePystem.pro

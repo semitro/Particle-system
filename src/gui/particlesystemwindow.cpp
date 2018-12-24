@@ -7,9 +7,9 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 	: QSFMLCanvas(parent, position, size)
 {
 
-	emitter  = new DotEmitter(50, 400, params.avgCreationTime, params.maxParticles);
+	emitter  = new DotEmitter(10, 10, params.avgCreationTime, params.maxParticles);
 	facility = new Facility(600, 400, params.facilitySize, params.b, DISTRIBUTION_LAW::DET);
-	queue    = new SmmQueue(300, 300, params.queueSize, facility);
+	queue    = new SmmQueue(200, 200, params.queueSize, facility);
 	dustMan  = new DustMan(1500, 1200);
 	QFrame *newStage = new QFrame;
 	newStage->move(10, 10);
@@ -19,13 +19,13 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 
 void ParticleSystemWindow::OnInit(){
 	this->attractors = new vector<Attractor*>();
-	attractors->push_back(queue);
+	attractors->push_back(dustMan); // order is important
 	attractors->push_back(facility);
-	attractors->push_back(dustMan);
+	attractors->push_back(queue);
 	this->particleSystem = new ParticleSystem (emitter, new ParticleLaw(&newtonLaw), attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
 	this->time = 0.f;
-
+	clock.restart();
 }
 
 void ParticleSystemWindow::mousePressEvent ( QMouseEvent * event ){
@@ -40,6 +40,6 @@ void ParticleSystemWindow::OnUpdate(){
 	RenderWindow::clear(Color(250, 25, 25));
 	particleSystem->update(dTime/WORLD_TIME_SPEED);
 	particleDrawer->drawPaticles(*this, time);
+//	qDebug() << "Update charts..";
 	resultsWindow->update(time);
-
 }

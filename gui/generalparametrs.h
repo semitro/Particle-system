@@ -16,7 +16,7 @@ public:
 	explicit GeneralParametrs(QWidget *parent = nullptr);
 	~GeneralParametrs();
 
-	SmmParametrs getParams() const;
+	SmmParametrs *getParams() const;
 
 private slots:
 	void on_pushButton_pressed();
@@ -32,7 +32,7 @@ private slots:
 	void on_avgCreationTime_valueChanged(double arg1);
 
 private:
-	SmmParametrs params;
+	SmmParametrs *params;
 
 	Ui::GeneralParametrs *ui;
 };

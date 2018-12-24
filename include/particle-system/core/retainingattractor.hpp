@@ -18,6 +18,7 @@ protected:
 	virtual bool doINeedAttract        (Particle &p, float deltaTime)=0;
 	virtual void particleHereHandler   (Particle &p, float deltaTime)=0;
 	virtual void particleReleaseHandler(Particle &p, float deltaTime)=0;
+	virtual void newUpdateHanlder()=0;
 
 	float m;
 	size_t particlesNumber; // what are in the zone of retaining

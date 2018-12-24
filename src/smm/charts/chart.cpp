@@ -9,13 +9,11 @@ Chart::Chart(QGraphicsItem *parent, Qt::WindowFlags wFlags):
 	m_series(0),
 	m_axis(new QValueAxis),
 	m_step(0),
-	max_x(10),
+	max_x(1),
 	min_x(0),
 	min_y(0),
-	max_y(10)
+	max_y(1)
 {
-	QObject::connect(&m_timer, &QTimer::timeout, this, &Chart::handleTimeout);
-	m_timer.setInterval(1000);
 
 	m_series = new QSplineSeries(this);
 	QPen green(Qt::red);
@@ -38,20 +36,15 @@ Chart::~Chart()
 
 }
 
-void Chart::addValue(qreal m_x, qreal m_y)
+void Chart::addValue(qreal x, qreal y)
 {
 
-	max_x = MAX(max_x, m_x);
-	min_x = MIN(min_x, m_x);
-	max_y = MAX(max_y, m_y);
-	min_y = MIN(min_y, m_y);
+	max_x = MAX(max_x, x);
+	min_x = MIN(min_x, x);
+	max_y = MAX(max_y, y);
+	min_y = MIN(min_y, y);
 
-	m_series->append(m_x, m_y);
+	m_series->append(x, y);
 	axisX()->setRange(min_x, max_x);
 	axisY()->setRange(min_y, max_y);
-}
-
-void Chart::handleTimeout()
-{
-	return ;
 }

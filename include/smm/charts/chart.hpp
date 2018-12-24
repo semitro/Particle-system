@@ -19,10 +19,7 @@ public:
 	Chart(QGraphicsItem *parent = 0, Qt::WindowFlags wFlags = 0);
 	virtual ~Chart();
 	void addValue(qreal m_x, qreal m_y);
-public slots:
-	void handleTimeout();
 private:
-	QTimer m_timer;
 	QSplineSeries *m_series;
 	QStringList m_titles;
 	QValueAxis *m_axis;

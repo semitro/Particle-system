@@ -31,7 +31,7 @@ bool Facility::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 
 bool Facility::amIGoingToHandle(Transact &t, float dT)
 {
-	qDebug() << "accept: " << howManyCanAccept();
+//	qDebug() << "accept: " << howManyCanAccept();
 	if(t.queueData[0].state == StateInQueue::LEAVED
 			&& t.facilityData[0].state == StateInFacility::READY
 			&& canAccept()
@@ -50,10 +50,12 @@ void Facility::transactHereHandler(Transact &t, float deltaTime)
 			&& canAccept()){
 		t.facilityData[0].state = StateInFacility::CULTIVATING;
 		this->transactsNumber++;
+		qDebug() << "TRANSACT ENTER FACILITY " << transactsNumber;
 	}
 
 	if(t.facilityData[0].state == StateInFacility::CULTIVATING){
 		t.facilityData[0].timeOfBeing += deltaTime;
+		qDebug() << "cultivating " << t.facilityData[0].timeOfBeing;
 	}
 }
 void Facility::transactReleaseHandler(Transact &p, float deltaTime)
@@ -61,7 +63,12 @@ void Facility::transactReleaseHandler(Transact &p, float deltaTime)
 	if(p.facilityData[0].state == StateInFacility::CULTIVATING){
 		this->transactsNumber--;
 		this->attracting--;
-		qDebug() << "attracting: " << attracting;
+		qDebug() << "TRANSACT LEAVED FACILITY " << transactsNumber;
 		p.facilityData[0].state = StateInFacility::PROCESSED;
 	}
+}
+
+void Facility::newUpdateHanlder()
+{
+
 }

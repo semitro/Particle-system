@@ -12,6 +12,8 @@ protected:
 	virtual void transactHereHandler(Transact &t, float deltaTime) override;
 	virtual void transactReleaseHandler(Transact &p, float deltaTime) override;
 	virtual bool isItTimeToReleaseTransact(Transact &t, float deltaTime) override;
+
+	virtual void newUpdateHanlder() override;
 };
 
 #endif // DUSTMAN_HPP

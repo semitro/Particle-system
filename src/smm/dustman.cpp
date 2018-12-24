@@ -25,3 +25,8 @@ bool DustMan::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 {
 
 }
+
+void DustMan::newUpdateHanlder()
+{
+
+}

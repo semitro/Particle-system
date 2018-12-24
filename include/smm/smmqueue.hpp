@@ -24,12 +24,14 @@ private:
 	Facility* master;
 	size_t 	  capacity;
 	size_t    trasactsHere;
+	size_t    sendedToMaster; // ready to use in F.
 	// Agent interface
 protected:
 	virtual bool amIGoingToHandle(Transact &t, float dT) override;
 	virtual void transactHereHandler(Transact &t, float deltaTime) override;
 	virtual void transactReleaseHandler(Transact &p, float deltaTime) override;
 	virtual bool isItTimeToReleaseTransact(Transact &t, float deltaTime) override;
+	virtual void newUpdateHanlder() override;
 };
 
 #endif // SMMQUEUE_HPP

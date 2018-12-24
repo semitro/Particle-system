@@ -34,4 +34,5 @@ void ResultsWindow::update(float time)
 {
 	this->facilityParticlesChart->addValue(time, facility->getTransactsNumber());
 	this->queueParticlesChart->addValue(time, queue->getTransactsNumber());
+	qDebug() << "charts updated";
 }

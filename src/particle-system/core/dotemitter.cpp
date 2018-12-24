@@ -24,6 +24,7 @@ vector<Particle> DotEmitter::emit(float deltaTime)
 		vector<Particle> p(1);
 		p[0].x  = this->x;
 		p[0].y  = this->y;
+		qDebug() << "CREATE PARTICLE";
 		return p;
 	}
 	else{
