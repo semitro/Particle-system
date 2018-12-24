@@ -1,16 +1,19 @@
 #include "gui/particlesystemwindow.hpp"
 
 ParticleSystemWindow::~ParticleSystemWindow(){}
-ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& position, const QSize &size)
+ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& position,
+										   const QSize &size,
+										   SmmParametrs params)
 	: QSFMLCanvas(parent, position, size)
 {
 
-//	facilityMenu = new FacilityMenu(this);
+	facility = new Facility(600, 400, params.facilitySize, params.b, DISTRIBUTION_LAW::DET);
+	queue = new SmmQueue(300, 300, params.queueSize, facility);
+	emitter = new DotEmitter(50, 400, params.avgCreationTime, params.maxParticles);
 }
 
 void ParticleSystemWindow::OnInit(){
 
-	this->parametrsWindow.show();
 	this->queueChart = new Chart;
 	this->queueChartView = new QChartView(queueChart);
 	queueChartView->setRenderHint(QPainter::Antialiasing);
@@ -27,13 +30,9 @@ void ParticleSystemWindow::OnInit(){
 //	particleChartView->show();
 
 	this->attractors = new vector<Attractor*>();
-	facility = new Facility(600, 400, 5, 5.5f, DISTRIBUTION_LAW::DET);
 	attractors->push_back(facility);
-	this->queue = new SmmQueue(300, 300, 20, facility);
 //	attractors->push_back(queue);
-	this->particleSystem = new ParticleSystem(new DotEmitter(50, 400, 2.5f, 25),
-											  new ParticleLaw(&newtonLaw),
-						attractors);
+	this->particleSystem = new ParticleSystem( emitter, new ParticleLaw(&newtonLaw), attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
 	this->time = 0.f;
 

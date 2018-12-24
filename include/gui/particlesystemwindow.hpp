@@ -17,6 +17,7 @@
 #include "gui/facilitymenu.h"
 #include "gui/generalparametrs.h"
 #include "smm/charts/chart.hpp"
+#include "smm/groundmath.h"
 
 #define WORLD_TIME_SPEED 500000.f
 
@@ -25,10 +26,12 @@ class ParticleSystemWindow : public QSFMLCanvas
 {
 public:
 	~ParticleSystemWindow();
-	ParticleSystemWindow(QWidget* parent, const QPoint& position, const QSize& size);
+	ParticleSystemWindow(QWidget* parent, const QPoint& position, const QSize& size,
+					SmmParametrs params);
 protected:
 	void mousePressEvent(QMouseEvent *);
 private:
+	SmmParametrs params;
 	vector<Attractor*> *attractors;
 	ParticleSystem *particleSystem;
 	ParticlesDrawer *particleDrawer;
@@ -44,13 +47,14 @@ private:
 	Chart *facilityChart;
 	QChartView *facilityChartView;
 
+	Emitter *emitter;
+
 	Clock clock;
 	QTimer timer;
 	float time;
 	FacilityMenu *facilityMenu;
 	virtual void OnInit();
 	virtual void OnUpdate();
-	GeneralParametrs parametrsWindow;
 private slots:
 	void onTimeOut();
 };

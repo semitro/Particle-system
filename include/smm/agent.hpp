@@ -3,7 +3,7 @@
 
 #include "particle-system/core/retainingattractor.hpp"
 #include "transact.hpp"
-
+#include "groundmath.h"
 
 #define AGENT_ATTRACTION_FORCE 25.0f
 #define AGENT_HOLDING_RADUIS   10.5f

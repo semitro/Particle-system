@@ -1,15 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>GeneralParametrs</class>
  <widget class="QDockWidget" name="GeneralParametrs">
-<property name="enabled">
+  <property name="enabled">
    <bool>true</bool>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>503</width>
-    <height>304</height>
+    <width>579</width>
+    <height>411</height>
    </rect>
   </property>
   <property name="floating">
@@ -25,129 +26,218 @@
    <string>DockWidget</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>180</y>
-      <width>211</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Запустить симуляцию</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>181</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ёмкость накопителя</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>191</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Среднее время обработки</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox_2">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>0</y>
-      <width>48</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="spinBox_3">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>50</y>
-      <width>48</width>
-      <height>26</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>362</width>
-      <height>27</height>
+      <x>100</x>
+      <y>40</y>
+      <width>366</width>
+      <height>282</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
      <item>
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>Закон распределения  b</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="comboBox">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <property name="maxVisibleItems">
-        <number>2</number>
-       </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <property name="text">
-         <string>Детерминированный</string>
-        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>Ёмкость накопителя</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="facility_size">
+           <property name="maximum">
+            <number>10000000</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <property name="text">
-         <string>Экспоненциальный</string>
-        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>Ёмкость прибора</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="queue_size">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
-      </widget>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>Среднее время обработки</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="facility_b">
+           <property name="minimum">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="text">
+            <string>Закон распределения  b</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="facility_law">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>2</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>Детерминированный</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Экспоненциальный</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>179</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Входящий поток заявок</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Сколько заявок создать?</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="particlesToGen">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>10000000</number>
+           </property>
+           <property name="singleStep">
+            <number>10</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_6">
+           <property name="text">
+            <string>Среднее время поступления</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="avgCreationTime">
+           <property name="minimum">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>999.990000000000009</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>Закон</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <item>
+            <property name="text">
+             <string>Детерменированный</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Экспоненциальный</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
        <property name="text">
-        <string>Ёмкость прибора</string>
+        <string>Запустить симуляцию</string>
        </property>
       </widget>
-     </item>
-     <item>
-      <widget class="QSpinBox" name="spinBox"/>
      </item>
     </layout>
    </widget>
   </widget>
  </widget>
+ <resources/>
+ <connections/>
 </ui>
