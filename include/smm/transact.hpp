@@ -34,7 +34,7 @@ struct Transact{
 		: id(counter++), particleId(particleId)
 	{
 		facilityData[0].state = StateInFacility::READY;
-		queueData[0].state = StateInQueue::LEAVED; // HAVE NEVER BEEN!!
+		queueData[0].state = StateInQueue::HAVE_NEVER_BEEN; // HAVE NEVER BEEN!!
 		queueData[0].timeOfBeing = 0.f;
 		queueData[0].currentTime = 0.f;
 		facilityData[0].currentTime = 0.f;

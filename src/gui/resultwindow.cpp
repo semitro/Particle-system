@@ -27,9 +27,11 @@ ResultsWindow::ResultsWindow(QWidget *Parent,
 	facilityParticlesChartView->move(500, 200);
 	facilityParticlesChartView->show();
 	this->close();
+	this->hide();
 }
 
-void ResultsWindow::update(float currentTime)
+void ResultsWindow::update(float time)
 {
-
+	this->facilityParticlesChart->addValue(time, facility->getTransactsNumber());
+	this->queueParticlesChart->addValue(time, queue->getTransactsNumber());
 }

@@ -19,6 +19,7 @@
 #include "smm/charts/chart.hpp"
 #include "smm/groundmath.h"
 #include "resultwindow.hpp"
+#include "smm/dustman.hpp"
 
 #define WORLD_TIME_SPEED 500000.f
 
@@ -34,21 +35,16 @@ protected:
 private:
 	SmmParametrs params;
 	vector<Attractor*> *attractors;
+
 	ParticleSystem *particleSystem;
 	ParticlesDrawer *particleDrawer;
-	SmmQueue *queue;
-
-	Chart *queueChart;
-	QChartView *queueChartView;
-
-	Chart *particleChart;
-	QChartView *particleChartView;
-
-	Facility *facility;
-	Chart *facilityChart;
-	QChartView *facilityChartView;
 
 	Emitter *emitter;
+	SmmQueue *queue;
+
+	Facility *facility;
+
+	DustMan *dustMan;
 
 	Clock clock;
 	QTimer timer;

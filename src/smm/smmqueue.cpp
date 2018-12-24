@@ -47,7 +47,5 @@ void SmmQueue::transactReleaseHandler(Transact &t, float deltaTime)
 
 bool SmmQueue::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 {
-//	qDebug() << "time to release" << t.queueData[0].timeOfBeing;
-	return t.queueData[0].timeOfBeing >= 20.f;
-	// master->canAccept();
+	return master->canAccept();
 }

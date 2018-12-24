@@ -7,38 +7,22 @@ ParticleSystemWindow::ParticleSystemWindow(QWidget* parent, const QPoint& positi
 	: QSFMLCanvas(parent, position, size)
 {
 
+	emitter  = new DotEmitter(50, 400, params.avgCreationTime, params.maxParticles);
 	facility = new Facility(600, 400, params.facilitySize, params.b, DISTRIBUTION_LAW::DET);
-	queue = new SmmQueue(300, 300, params.queueSize, facility);
-	emitter = new DotEmitter(50, 400, params.avgCreationTime, params.maxParticles);
+	queue    = new SmmQueue(300, 300, params.queueSize, facility);
+	dustMan  = new DustMan(1500, 1200);
 	QFrame *newStage = new QFrame;
 	newStage->move(10, 10);
 	newStage->resize(1200, 500);
 	resultsWindow = new ResultsWindow(newStage, queue, facility);
-	resultsWindow->show();
-	newStage->show();
 }
 
 void ParticleSystemWindow::OnInit(){
-
-	this->queueChart = new Chart;
-	this->queueChartView = new QChartView(queueChart);
-	queueChartView->setRenderHint(QPainter::Antialiasing);
-//	queueChartView->show();
-
-	this->particleChart = new Chart;
-	this->particleChartView = new QChartView(particleChart);
-
-	this->facilityChart = new Chart;
-	this->facilityChartView = new QChartView(facilityChart);
-	facilityChartView->setGeometry(500, 500, 100, 100);
-//	facilityChartView->show();
-
-//	particleChartView->show();
-
 	this->attractors = new vector<Attractor*>();
+	attractors->push_back(queue);
 	attractors->push_back(facility);
-//	attractors->push_back(queue);
-	this->particleSystem = new ParticleSystem( emitter, new ParticleLaw(&newtonLaw), attractors);
+	attractors->push_back(dustMan);
+	this->particleSystem = new ParticleSystem (emitter, new ParticleLaw(&newtonLaw), attractors);
 	this->particleDrawer = new ParticlesDrawer(particleSystem->getParticles());
 	this->time = 0.f;
 
@@ -56,9 +40,6 @@ void ParticleSystemWindow::OnUpdate(){
 	RenderWindow::clear(Color(250, 25, 25));
 	particleSystem->update(dTime/WORLD_TIME_SPEED);
 	particleDrawer->drawPaticles(*this, time);
-	particleChart->addValue(time, particleSystem->getParticles()->size());
-	facilityChart->addValue(time, this->facility->getTransactsNumber());
-	queueChart->addValue(time, queue->getTransactsNumber());
 	resultsWindow->update(time);
 
 }

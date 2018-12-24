@@ -35,16 +35,14 @@ void RetainingAttractor::attract(vector<Particle> &particles, float dT){
 		if(here(p)){
 			particleHereHandler(p, dT);
 			particlesNumber++;
-			p.vx = 0;
-			p.vy = 0;
 			if(releaseCondition(p, dT)){
 				particlesNumber--;
 				particleReleaseHandler(p, dT);
 				qDebug() << "release\n";
-				p.vx = 15.f;
-				p.vy = -10.f;
-				p.x = 1000;
-				p.y = 500;
+			}
+			else{
+				p.vx = 0;
+				p.vy = 0;
 			}
 		}
 	}

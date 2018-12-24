@@ -35,7 +35,8 @@ HEADERS += \
     include/particle-system/core/dotemitter.hpp \
     include/smm/charts/chart.hpp \
     gui/generalparametrs.h \
-    include/gui/resultwindow.hpp
+    include/gui/resultwindow.hpp \
+    include/smm/dustman.hpp
 
 SOURCES += \
     src/main.cpp \
@@ -60,7 +61,8 @@ SOURCES += \
     src/particle-system/core/dotemitter.cpp \
     src/smm/charts/chart.cpp \
     gui/generalparametrs.cpp \
-    src/gui/resultwindow.cpp
+    src/gui/resultwindow.cpp \
+    src/smm/dustman.cpp
 
 SUBDIRS += \
     SarticlePystem.pro
