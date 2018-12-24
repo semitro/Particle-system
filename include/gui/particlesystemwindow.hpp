@@ -21,7 +21,7 @@
 #include "resultwindow.hpp"
 #include "smm/dustman.hpp"
 
-#define WORLD_TIME_SPEED 250000.f
+#define WORLD_TIME_SPEED 940000.f
 
 // intgrate qt and sfml
 class ParticleSystemWindow : public QSFMLCanvas

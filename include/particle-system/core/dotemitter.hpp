@@ -5,6 +5,7 @@
 #include "particle-system/core/emitter.hpp"
 
 #include <vector>
+#include "smm/groundmath.h"
 
 using std::vector;
 using std::size_t;
@@ -12,7 +13,7 @@ using std::size_t;
 class DotEmitter : public Emitter
 {
 public:
-	DotEmitter(float posX, float posY, float mTime, size_t maxEmissions);
+	DotEmitter(float posX, float posY, float mTime, size_t maxEmissions, DISTRIBUTION_LAW distribution);
 	virtual ~DotEmitter();
 	virtual vector<Particle> emit(float deltaTime) override;
 
@@ -21,6 +22,8 @@ private:
 	float nextEmissionTime;
 	size_t maxEmissions;
 	size_t emitted;
+	DISTRIBUTION_LAW distribution;
+	float calcNextEmission();
 };
 
 

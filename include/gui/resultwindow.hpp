@@ -8,6 +8,7 @@
 #include "particle-system/core/particlesystem.hpp"
 #include "smm/facility.hpp"
 #include "smm/smmqueue.hpp"
+#include "smm/groundmath.h"
 
 class ResultsWindow : public QWidget
 {
@@ -23,6 +24,10 @@ private:
 	QChartView *facilityParticlesChartView;
 	Chart *queueParticlesChart;
 	QChartView *queueParticlesChartView;
+	Chart *queueAvgChart;
+	QChartView *queueAvgChartView;
+	Chart *queueAvgTimeChart;
+	QChartView *queueAvgTimeChartView;
 };
 
 #endif // RESULTWINDOW_HPP

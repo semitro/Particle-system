@@ -44,7 +44,7 @@ void Chart::addValue(qreal x, qreal y)
 	max_y = MAX(max_y, y);
 	min_y = MIN(min_y, y);
 
-	m_series->append(x, y);
 	axisX()->setRange(min_x, max_x);
 	axisY()->setRange(min_y, max_y);
+	m_series->append(x, y);
 }

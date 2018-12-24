@@ -11,7 +11,7 @@ GeneralParametrs::GeneralParametrs(QWidget *parent) :
 	params->avgCreationTime = 1.f;
 	params->b = 1.f;
 	params->facilitySize = 1;
-	params->maxParticles = 100;
+	params->maxParticles = 100000;
 	params->queueSize = 1;
 	params->creationLaw = DET;
 	params->facilityLaw = DET;
@@ -60,3 +60,13 @@ SmmParametrs *GeneralParametrs::getParams() const
 	return params;
 }
 
+
+void GeneralParametrs::on_comboBox_currentIndexChanged(int index)
+{
+   this->params->creationLaw = (index == 0 ? DET : EXP);
+}
+
+void GeneralParametrs::on_facility_law_currentIndexChanged(int index)
+{
+   this->params->facilityLaw = (index == 0 ? DET : EXP);
+}

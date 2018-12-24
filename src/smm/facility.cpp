@@ -4,10 +4,14 @@
 Facility::Facility(float x, float y, size_t capacity,
 		 float cultivationTime, DISTRIBUTION_LAW cultivationLaw)
 	: Agent(x, y), b(cultivationTime),
-	  distributionLaw(cultivationLaw), capacity(capacity),
+	  cultivationLaw(cultivationLaw),
+	  capacity(capacity),
 	  transactsNumber(0), attracting(0)
 {
-
+	if(this->cultivationLaw == DISTRIBUTION_LAW::DET)
+			this->nextCultTime = b;
+		else
+			this->nextCultTime = nextExpRand(b);
 }
 
 Facility::~Facility(){}
@@ -26,7 +30,20 @@ size_t Facility::getTransactsNumber()
 
 bool Facility::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 {
-	return t.facilityData[0].timeOfBeing >= b;
+	if(t.facilityData[0].timeOfBeing >= this->nextCultTime){
+
+		if(this->cultivationLaw == DISTRIBUTION_LAW::DET)
+			this->nextCultTime = b;
+		else{
+			qDebug() << "exp" << nextCultTime;
+			this->nextCultTime = nextExpRand(b);
+		}
+
+		return  true;
+	}
+		else
+
+	return false;
 }
 
 bool Facility::amIGoingToHandle(Transact &t, float dT)

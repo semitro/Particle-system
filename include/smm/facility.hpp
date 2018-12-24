@@ -22,7 +22,7 @@ protected:
 	size_t transactsNumber;
 	size_t attracting; // between queue and facility
 	float b; // cultivation time
-	DISTRIBUTION_LAW distributionLaw;
+	float nextCultTime;
 
 	// Agent interface
 protected:

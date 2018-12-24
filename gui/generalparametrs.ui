@@ -26,13 +26,13 @@
    <string>DockWidget</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>100</x>
       <y>40</y>
       <width>366</width>
-      <height>282</height>
+      <height>290</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -49,6 +49,9 @@
          </item>
          <item>
           <widget class="QSpinBox" name="facility_size">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="maximum">
             <number>10000000</number>
            </property>
@@ -70,6 +73,9 @@
          </item>
          <item>
           <widget class="QSpinBox" name="queue_size">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="minimum">
             <number>1</number>
            </property>
@@ -116,7 +122,7 @@
          <item>
           <widget class="QComboBox" name="facility_law">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="currentIndex">
             <number>0</number>
@@ -170,7 +176,7 @@
             <number>10</number>
            </property>
            <property name="value">
-            <number>100</number>
+            <number>100000</number>
            </property>
           </widget>
          </item>

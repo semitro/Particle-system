@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include "math.h"
 
+#define MAX(A, B) ((A) >= (B) ? (A) : (B) )
+#define MIN(A, B) ((A) <= (B) ? (A) : (B) )
+
 enum DISTRIBUTION_LAW{
 	DET,
 	EXP

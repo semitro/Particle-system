@@ -3,7 +3,8 @@
 #include <QtDebug>
 
 SmmQueue::SmmQueue(float x, float y, size_t capacity, Facility *master)
-	:Agent(x, y), capacity(capacity), trasactsHere(0), master(master)
+	:Agent(x, y), capacity(capacity), trasactsHere(0), master(master),
+	  transactsWholeNumber(0), numberOfTicks(0)
 {
 
 }
@@ -13,6 +14,11 @@ SmmQueue::~SmmQueue(){}
 size_t SmmQueue::getTransactsNumber()
 {
 	return this->trasactsHere;
+}
+
+float SmmQueue::getTransactsAvgNumber()
+{
+	return this->transactsWholeNumber / (float)this->numberOfTicks;
 }
 // am I going to attract!!!
 bool SmmQueue::amIGoingToHandle(Transact &t, float dT)
@@ -27,6 +33,7 @@ void SmmQueue::transactHereHandler(Transact &t, float deltaTime)
 //			&& this->trasactsHere < capacity){
 	{
 		trasactsHere++;
+		transactsWholeNumber++;
 		qDebug() << "TRANSACT ENTER QUEUE. num = " << trasactsHere;
 		t.queueData[0].state = StateInQueue::QUEUEING;
 	}
@@ -58,4 +65,5 @@ bool SmmQueue::isItTimeToReleaseTransact(Transact &t, float deltaTime)
 void SmmQueue::newUpdateHanlder()
 {
 	this->sendedToMaster = 0;
+	this->numberOfTicks++;
 }

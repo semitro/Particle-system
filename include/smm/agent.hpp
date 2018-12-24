@@ -14,6 +14,7 @@ public:
 	Agent(float x, float y);
 	~Agent();
 
+	static vector<Transact*> *allTheTransacts;
 	// RetainingAttractor interface
 protected:
 	virtual bool doINeedAttract(Particle &p, float deltaTime) final;
@@ -31,7 +32,6 @@ protected:
 	virtual void newUpdateHanlder()=0;
 private:
 	Transact &getTransact(unsigned long particle_id);
-	static vector<Transact*> *allTheTransacts;
 };
 
 #endif // FACILITY_HPP

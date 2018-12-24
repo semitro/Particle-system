@@ -20,11 +20,14 @@ public:
 	virtual ~SmmQueue() override;
 
 	size_t getTransactsNumber();
+	float getTransactsAvgNumber();
 private:
 	Facility* master;
 	size_t 	  capacity;
 	size_t    trasactsHere;
 	size_t    sendedToMaster; // ready to use in F.
+	size_t    transactsWholeNumber;
+	size_t    numberOfTicks;
 	// Agent interface
 protected:
 	virtual bool amIGoingToHandle(Transact &t, float dT) override;

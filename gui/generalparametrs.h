@@ -31,6 +31,10 @@ private slots:
 
 	void on_avgCreationTime_valueChanged(double arg1);
 
+	void on_comboBox_currentIndexChanged(int index);
+
+	void on_facility_law_currentIndexChanged(int index);
+
 private:
 	SmmParametrs *params;
 
